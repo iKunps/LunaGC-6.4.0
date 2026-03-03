@@ -1,4 +1,4 @@
-[{"comment":"6.1 P1 Nefer",
+[{"comment":"6.4 P1 Nefer",
   "gachaType":301,
   "scheduleId":4,
   "prefabPath":"GachaShowPanel_A259",
@@ -19,7 +19,7 @@
   "poolBalanceWeights5":[[1,30],[147,150],[181,10230]],
   "bannerType":"EVENT"
 },{
-  "comment":"6.1 P1 Furina",
+  "comment":"6.4 P1 Furina",
   "gachaType":400,
   "scheduleId":3,
   "prefabPath":"GachaShowPanel_A260",
@@ -40,7 +40,7 @@
   "poolBalanceWeights5":[[1,30],[147,150],[181,10230]],
   "bannerType":"EVENT"
 },{
-  "comment":"6.1 P1 Weapons",
+  "comment":"6.4 P1 Weapons",
   "gachaType":302,
   "scheduleId":2,
   "prefabPath":"GachaShowPanel_A183",
