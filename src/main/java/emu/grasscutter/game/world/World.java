@@ -17,7 +17,7 @@ import emu.grasscutter.game.quest.enums.QuestContent;
 import emu.grasscutter.game.world.data.TeleportProperties;
 import emu.grasscutter.net.packet.BasePacket;
 import emu.grasscutter.net.proto.ChatInfoOuterClass.ChatInfo.SystemHint;
-import emu.grasscutter.net.proto.ChatInfoOuterClass.ChatInfo.SystemHintType;
+// SystemHintType enum not in proto; using int constants: ENTER_WORLD=1, LEAVE_WORLD=2
 import emu.grasscutter.net.proto.EnterTypeOuterClass.EnterType;
 import emu.grasscutter.scripts.data.SceneConfig;
 import emu.grasscutter.server.event.player.PlayerTeleportEvent;
@@ -207,7 +207,7 @@ public class World implements Iterable<Player> {
                                 player,
                                 0,
                                 SystemHint.newBuilder()
-                                        .setType(SystemHintType.SYSTEM_HINT_TYPE_CHAT_ENTER_WORLD.getNumber())
+                                        .setType(1 /* SYSTEM_HINT_TYPE_CHAT_ENTER_WORLD */)
                                         .build()));
             }
         }
@@ -258,7 +258,7 @@ public class World implements Iterable<Player> {
                                 player,
                                 0,
                                 SystemHint.newBuilder()
-                                        .setType(SystemHintType.SYSTEM_HINT_TYPE_CHAT_ENTER_WORLD.getNumber())
+                                        .setType(1 /* SYSTEM_HINT_TYPE_CHAT_ENTER_WORLD */)
                                         .build()));
             }
         }
@@ -310,7 +310,7 @@ public class World implements Iterable<Player> {
                 victim.sendPacket(
                         new PacketPlayerEnterSceneNotify(
                                 victim,
-                                EnterType.ENTER_TYPE_SELF,
+                                EnterType.EnterType_ENTER_SELF,
                                 EnterReason.TeamKick,
                                 victim.getSceneId(),
                                 victim.getPosition()));
@@ -321,7 +321,7 @@ public class World implements Iterable<Player> {
                             player,
                             0,
                             SystemHint.newBuilder()
-                                    .setType(SystemHintType.SYSTEM_HINT_TYPE_CHAT_LEAVE_WORLD.getNumber())
+                                    .setType(2 /* SYSTEM_HINT_TYPE_CHAT_LEAVE_WORLD */)
                                     .build()));
         }
     }
@@ -404,20 +404,20 @@ public class World implements Iterable<Player> {
                         .teleportType(teleportType)
                         .enterReason(enterReason)
                         .teleportTo(teleportTo)
-                        .enterType(EnterType.ENTER_TYPE_JUMP);
+                        .enterType(EnterType.EnterType_ENTER_JUMP);
 
         val sceneData = GameData.getSceneDataMap().get(sceneId);
         if (dungeonData != null) {
             teleportProps
                     .teleportTo(dungeonData.getStartPosition())
                     .teleportRot(dungeonData.getStartRotation());
-            teleportProps.enterType(EnterType.ENTER_TYPE_DUNGEON).enterReason(EnterReason.DungeonEnter);
+            teleportProps.enterType(EnterType.EnterType_ENTER_DUNGEON).enterReason(EnterReason.DungeonEnter);
             teleportProps.dungeonId(dungeonData.getId());
         } else if (player.getSceneId() == sceneId) {
-            teleportProps.enterType(EnterType.ENTER_TYPE_GOTO);
+            teleportProps.enterType(EnterType.EnterType_ENTER_GOTO);
         } else if (sceneData != null && sceneData.getSceneType() == SceneType.SCENE_HOME_WORLD) {
             // Home
-            teleportProps.enterType(EnterType.ENTER_TYPE_SELF_HOME).enterReason(EnterReason.EnterHome);
+            teleportProps.enterType(EnterType.EnterType_ENTER_SELF_HOME).enterReason(EnterReason.EnterHome);
         }
 
         return transferPlayerToScene(player, teleportProps.build());

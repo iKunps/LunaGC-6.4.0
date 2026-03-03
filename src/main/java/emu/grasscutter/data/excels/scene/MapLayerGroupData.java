@@ -8,7 +8,7 @@ import lombok.Getter;
 @ResourceType(name = "MapLayerGroupExcelConfigData.json")
 @Getter
 public final class MapLayerGroupData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     @SerializedName("KIBILDMLEPI")

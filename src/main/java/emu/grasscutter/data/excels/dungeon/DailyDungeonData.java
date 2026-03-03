@@ -10,7 +10,7 @@ public class DailyDungeonData extends GameResource {
     private static final int[] empty = new int[0];
     private final Int2ObjectMap<int[]> map;
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int[] monday;

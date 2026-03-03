@@ -6,7 +6,6 @@ import emu.grasscutter.game.dungeons.challenge.WorldChallenge;
 import emu.grasscutter.game.tower.TowerManager;
 import emu.grasscutter.net.proto.*;
 import emu.grasscutter.net.proto.TowerLevelEndNotifyOuterClass.TowerLevelEndNotify;
-import emu.grasscutter.net.proto.TowerLevelEndNotifyOuterClass.TowerLevelEndNotify.ContinueStateType;
 
 public class TowerResult extends BaseDungeonResult {
     WorldChallenge challenge;
@@ -31,19 +30,20 @@ public class TowerResult extends BaseDungeonResult {
 
     @Override
     protected void onProto(DungeonSettleNotifyOuterClass.DungeonSettleNotify.Builder builder) {
-        var continueStatus = ContinueStateType.CONTINUE_STATE_TYPE_CAN_NOT_CONTINUE_VALUE;
-        if (challenge.isSuccess()) {
-            if (hasNextLevel) {
-                continueStatus = ContinueStateType.CONTINUE_STATE_TYPE_CAN_ENTER_NEXT_LEVEL_VALUE;
-            } else if (canJump) {
-                continueStatus = ContinueStateType.CONTINUE_STATE_TYPE_CAN_ENTER_NEXT_FLOOR_VALUE;
-            }
-        }
+        // ContinueStateType enum and setContinueState/setNextFloorId not in current proto
+        // var continueStatus = 0; // CONTINUE_STATE_TYPE_CAN_NOT_CONTINUE
+        // if (challenge.isSuccess()) {
+        //     if (hasNextLevel) {
+        //         continueStatus = 1; // CONTINUE_STATE_TYPE_CAN_ENTER_NEXT_LEVEL
+        //     } else if (canJump) {
+        //         continueStatus = 2; // CONTINUE_STATE_TYPE_CAN_ENTER_NEXT_FLOOR
+        //     }
+        // }
 
         var towerLevelEndNotify =
                 TowerLevelEndNotify.newBuilder()
                         .setIsSuccess(challenge.isSuccess())
-                        .setContinueState(continueStatus)
+                        // .setContinueState(continueStatus) // field not in proto
                         .addRewardItemList(
                                 ItemParamOuterClass.ItemParam.newBuilder().setItemId(201).setCount(1000));
 
@@ -51,9 +51,9 @@ public class TowerResult extends BaseDungeonResult {
             towerLevelEndNotify.addFinishedStarCondList(i);
         }
 
-        if (nextFloorId > 0 && canJump) {
-            towerLevelEndNotify.setNextFloorId(nextFloorId);
-        }
+        // if (nextFloorId > 0 && canJump) {
+        //     towerLevelEndNotify.setNextFloorId(nextFloorId); // field not in proto
+        // }
         builder.setTowerLevelEndNotify(towerLevelEndNotify.build());
     }
 }

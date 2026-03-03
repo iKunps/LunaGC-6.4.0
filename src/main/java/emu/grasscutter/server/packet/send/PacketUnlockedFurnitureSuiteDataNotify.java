@@ -12,7 +12,7 @@ public class PacketUnlockedFurnitureSuiteDataNotify extends BasePacket {
         var proto =
                 UnlockedFurnitureSuiteDataNotifyOuterClass.UnlockedFurnitureSuiteDataNotify.newBuilder();
 
-        proto.addAllFurnitureSuiteIdList(unlockList);
+        // proto.addAllFurnitureSuiteIdList(unlockList); // field not in current proto
         proto.setIsAll(true);
 
         this.setData(proto);

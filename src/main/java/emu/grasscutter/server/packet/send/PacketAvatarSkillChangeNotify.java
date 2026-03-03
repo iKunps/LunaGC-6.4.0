@@ -14,9 +14,9 @@ public class PacketAvatarSkillChangeNotify extends BasePacket {
                         .setAvatarGuid(avatar.getGuid())
                         .setEntityId(avatar.getEntityId())
                         .setSkillDepotId(avatar.getSkillDepotId())
-                        .setAvatarSkillId(skillId)
-                        .setOldLevel(oldLevel)
-                        .setCurLevel(curLevel)
+                        // .setAvatarSkillId(skillId) // field not in current proto
+                        // .setOldLevel(oldLevel) // field not in current proto
+                        // .setCurLevel(curLevel) // field not in current proto
                         .build();
 
         this.setData(proto);

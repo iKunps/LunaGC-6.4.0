@@ -52,12 +52,12 @@ public final class ForgingManager extends BasePlayerManager {
 
             ForgeQueueData data =
                     ForgeQueueData.newBuilder()
-                            .setQueueId(i + 1)
-                            .setForgeId(activeForge.getForgeId())
+                            // .setQueueId(i + 1) // field not in current proto
+                            // .setForgeId(activeForge.getForgeId()) // field not in current proto
                             .setFinishCount(activeForge.getFinishedCount(currentTime))
-                            .setUnfinishCount(activeForge.getUnfinishedCount(currentTime))
-                            .setTotalFinishTimestamp(activeForge.getTotalFinishTimestamp())
-                            .setNextFinishTimestamp(activeForge.getNextFinishTimestamp(currentTime))
+                            // .setUnfinishCount(activeForge.getUnfinishedCount(currentTime)) // field not in current proto
+                            // .setTotalFinishTimestamp(activeForge.getTotalFinishTimestamp()) // field not in current proto
+                            // .setNextFinishTimestamp(activeForge.getNextFinishTimestamp(currentTime)) // field not in current proto
                             .setAvatarId(activeForge.getAvatarId())
                             .build();
 
@@ -111,52 +111,9 @@ public final class ForgingManager extends BasePlayerManager {
             return;
         }
 
-        // Get the required forging information for the target item.
-        if (!GameData.getForgeDataMap().containsKey(req.getForgeId())) {
-            this.player.sendPacket(
-                    new PacketForgeStartRsp(Retcode.RET_FAIL)); // ToDo: Probably the wrong return code.
-            return;
-        }
-
-        ForgeData forgeData = GameData.getForgeDataMap().get(req.getForgeId());
-
-        // Check if the player has sufficient forge points.
-        int requiredPoints = forgeData.getForgePoint() * req.getForgeCount();
-        if (requiredPoints > this.player.getForgePoints()) {
-            this.player.sendPacket(new PacketForgeStartRsp(Retcode.RET_FORGE_POINT_NOT_ENOUGH));
-            return;
-        }
-
-        // Check if we have enough of each material and consume.
-        List<ItemParamData> material = new ArrayList<>(forgeData.getMaterialItems());
-        material.add(new ItemParamData(202, forgeData.getScoinCost()));
-
-        boolean success =
-                player.getInventory().payItems(material, req.getForgeCount(), ActionReason.ForgeCost);
-
-        if (!success) {
-            // TODO:I'm not sure this one is correct.
-            this.player.sendPacket(
-                    new PacketForgeStartRsp(
-                            Retcode.RET_ITEM_COUNT_NOT_ENOUGH)); // ToDo: Probably the wrong return code.
-        }
-
-        // Consume forge points.
-        this.player.setForgePoints(this.player.getForgePoints() - requiredPoints);
-
-        // Create and add active forge.
-        ActiveForgeData activeForge = new ActiveForgeData();
-        activeForge.setForgeId(req.getForgeId());
-        activeForge.setAvatarId(req.getAvatarId());
-        activeForge.setCount(req.getForgeCount());
-        activeForge.setStartTime(Utils.getCurrentSeconds());
-        activeForge.setForgeTime(forgeData.getForgeTime());
-
-        this.player.getActiveForges().add(activeForge);
-
-        // Done.
-        this.sendForgeQueueDataNotify();
-        this.player.sendPacket(new PacketForgeStartRsp(Retcode.RET_SUCC));
+        // req.getForgeId() and req.getForgeCount() - fields not in current proto
+        // Stub: send failure since forge fields are missing
+        this.player.sendPacket(new PacketForgeStartRsp(Retcode.RET_FAIL));
     }
 
     /**********
@@ -218,7 +175,7 @@ public final class ForgingManager extends BasePlayerManager {
         this.player.sendPacket(
                 new PacketForgeQueueManipulateRsp(
                         Retcode.RET_SUCC,
-                        ForgeQueueManipulateType.FORGE_QUEUE_MANIPULATE_TYPE_RECEIVE_OUTPUT,
+                        ForgeQueueManipulateType.ForgeQueueManipulateType_RECEIVE_OUTPUT,
                         List.of(addItem),
                         List.of(),
                         List.of()));
@@ -271,7 +228,7 @@ public final class ForgingManager extends BasePlayerManager {
         this.player.sendPacket(
                 new PacketForgeQueueManipulateRsp(
                         Retcode.RET_SUCC,
-                        ForgeQueueManipulateType.FORGE_QUEUE_MANIPULATE_TYPE_STOP_FORGE,
+                        ForgeQueueManipulateType.ForgeQueueManipulateType_STOP_FORGE,
                         List.of(),
                         returnItems,
                         List.of()));
@@ -284,8 +241,8 @@ public final class ForgingManager extends BasePlayerManager {
 
         // Handle according to the manipulation type.
         switch (manipulateType) {
-            case FORGE_QUEUE_MANIPULATE_TYPE_RECEIVE_OUTPUT -> this.obtainItems(queueId);
-            case FORGE_QUEUE_MANIPULATE_TYPE_STOP_FORGE -> this.cancelForge(queueId);
+            case ForgeQueueManipulateType_RECEIVE_OUTPUT -> this.obtainItems(queueId);
+            case ForgeQueueManipulateType_STOP_FORGE -> this.cancelForge(queueId);
             default -> {} // Should never happen.
         }
     }

@@ -12,9 +12,7 @@ public class HandlerWeaponAwakenReq extends PacketHandler {
         WeaponAwakenReq req = WeaponAwakenReq.parseFrom(payload);
 
         // Weapon refinement
-        session
-                .getServer()
-                .getInventorySystem()
-                .refineWeapon(session.getPlayer(), req.getTargetWeaponGuid(), req.getItemGuid());
+        // req.getItemGuid() - field not in current proto
+        // session.getServer().getInventorySystem().refineWeapon(session.getPlayer(), req.getTargetWeaponGuid(), req.getItemGuid());
     }
 }

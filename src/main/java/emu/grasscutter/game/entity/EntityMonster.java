@@ -36,13 +36,13 @@ import javax.annotation.Nullable;
 import lombok.*;
 
 public class EntityMonster extends GameEntity {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private final Int2FloatOpenHashMap fightProperties;
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     private final Position position;
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     private final Position rotation;
 
     @Getter private final MonsterData monsterData;
@@ -413,9 +413,9 @@ public class EntityMonster extends GameEntity {
         var data = this.getMonsterData();
 
         var aiInfo =
-                SceneEntityAiInfo.newBuilder().setIsAiOpen(true).setBornPos(this.getBornPos().toProto());
+                SceneEntityAiInfo.newBuilder(); // .setBornPos(this.getBornPos().toProto()); // field not in current proto
         if (ownerEntityId != 0) {
-            aiInfo.setServantInfo(ServantInfo.newBuilder().setMasterEntityId(ownerEntityId));
+            // aiInfo.setServantInfo(ServantInfo.newBuilder().setMasterEntityId(ownerEntityId)); // field not in current proto
         }
 
         var authority =
@@ -429,7 +429,7 @@ public class EntityMonster extends GameEntity {
         var entityInfo =
                 SceneEntityInfo.newBuilder()
                         .setEntityId(this.getId())
-                        .setEntityType(ProtEntityType.PROT_ENTITY_TYPE_MONSTER)
+                        .setEntityType(ProtEntityType.ProtEntityType_PROT_ENTITY_MONSTER)
                         .setMotionInfo(this.getMotionInfo())
                         .addAnimatorParaList(AnimatorParameterValueInfoPair.newBuilder())
                         .setEntityClientData(EntityClientData.newBuilder())
@@ -455,7 +455,7 @@ public class EntityMonster extends GameEntity {
                         .setBlockId(this.getScene().getId())
                         .setSummonedTag(this.summonedTag)
                         .setOwnerEntityId(this.ownerEntityId)
-                        .setBornType(MonsterBornType.MONSTER_BORN_TYPE_DEFAULT);
+                        .setBornType(MonsterBornType.MonsterBornType_MONSTER_BORN_DEFAULT);
         summonTagMap.forEach((k, v) -> monsterInfo.putSummonTagMap(k, v == null ? 0 : 1));
 
         if (this.metaMonster != null) {

@@ -136,7 +136,7 @@ public class EntityAvatar extends GameEntity {
     public void onDeath(int killerId) {
         super.onDeath(killerId); // Invoke super class's onDeath() method.
 
-        this.killedType = PlayerDieType.PLAYER_DIE_TYPE_KILL_BY_MONSTER;
+        this.killedType = PlayerDieType.PlayerDieType_PLAYER_DIE_KILL_BY_MONSTER;
         this.killedBy = killerId;
         clearEnergy(ChangeEnergyReason.CHANGE_ENERGY_REASON_NONE);
     }
@@ -181,8 +181,8 @@ public class EntityAvatar extends GameEntity {
                                     FightProperty.FIGHT_PROP_CUR_HP,
                                     healed,
                                     mute
-                                            ? PropChangeReason.PROP_CHANGE_REASON_NONE
-                                            : PropChangeReason.PROP_CHANGE_REASON_ABILITY,
+                                            ? PropChangeReason.PropChangeReason_PROP_CHANGE_NONE
+                                            : PropChangeReason.PropChangeReason_PROP_CHANGE_ABILITY,
                                     ChangeHpReason.CHANGE_HP_ADD_ABILITY));
         }
 
@@ -310,14 +310,14 @@ public class EntityAvatar extends GameEntity {
                         .setAbilityInfo(AbilitySyncStateInfo.newBuilder())
                         .setRendererChangedInfo(EntityRendererChangedInfo.newBuilder())
                         .setAiInfo(
-                                SceneEntityAiInfo.newBuilder().setIsAiOpen(true).setBornPos(Vector.newBuilder()))
+                                SceneEntityAiInfo.newBuilder() /* .setBornPos(Vector.newBuilder()) */ )
                         .setBornPos(Vector.newBuilder())
                         .build();
 
         SceneEntityInfo.Builder entityInfo =
                 SceneEntityInfo.newBuilder()
                         .setEntityId(getId())
-                        .setEntityType(ProtEntityType.PROT_ENTITY_TYPE_AVATAR)
+                        .setEntityType(ProtEntityType.ProtEntityType_PROT_ENTITY_AVATAR)
                         .addAnimatorParaList(AnimatorParameterValueInfoPair.newBuilder())
                         .setEntityClientData(EntityClientData.newBuilder())
                         .setEntityAuthorityInfo(authority)

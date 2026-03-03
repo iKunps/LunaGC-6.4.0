@@ -1091,7 +1091,7 @@ public class SceneScriptManager {
     }
 
     public void meetEntities(List<? extends GameEntity> gameEntity) {
-        getScene().addEntities(gameEntity, VisionTypeOuterClass.VisionType.VISION_TYPE_MEET);
+        getScene().addEntities(gameEntity, VisionTypeOuterClass.VisionType.VisionType_VISION_MEET);
     }
 
     public void addEntities(List<? extends GameEntity> gameEntity) {
@@ -1102,7 +1102,7 @@ public class SceneScriptManager {
         getScene()
                 .removeEntities(
                         gameEntity.stream().map(e -> (GameEntity) e).collect(Collectors.toList()),
-                        VisionTypeOuterClass.VisionType.VISION_TYPE_REFRESH);
+                        VisionTypeOuterClass.VisionType.VisionType_VISION_REFRESH);
     }
 
     public RTree<SceneBlock, Geometry> getBlocksIndex() {
@@ -1119,7 +1119,7 @@ public class SceneScriptManager {
                         .filter(e -> configSet.contains(e.getConfigId()))
                         .toList();
 
-        getScene().removeEntities(toRemove, VisionTypeOuterClass.VisionType.VISION_TYPE_MISS);
+        getScene().removeEntities(toRemove, VisionTypeOuterClass.VisionType.VisionType_VISION_MISS);
     }
 
     public void removeMonstersInGroup(SceneGroup group, SceneSuite suite) {
@@ -1131,7 +1131,7 @@ public class SceneScriptManager {
                         .filter(e -> configSet.contains(e.getConfigId()))
                         .toList();
 
-        getScene().removeEntities(toRemove, VisionTypeOuterClass.VisionType.VISION_TYPE_MISS);
+        getScene().removeEntities(toRemove, VisionTypeOuterClass.VisionType.VisionType_VISION_MISS);
     }
 
     public void removeGadgetsInGroup(SceneGroup group, SceneSuite suite) {
@@ -1143,7 +1143,7 @@ public class SceneScriptManager {
                         .filter(e -> configSet.contains(e.getConfigId()))
                         .toList();
 
-        getScene().removeEntities(toRemove, VisionTypeOuterClass.VisionType.VISION_TYPE_MISS);
+        getScene().removeEntities(toRemove, VisionTypeOuterClass.VisionType.VisionType_VISION_MISS);
     }
 
     public void killMonstersInGroup(SceneGroup group, SceneSuite suite) {

@@ -15,9 +15,9 @@ public class PacketAddNoGachaAvatarCardNotify extends BasePacket {
                 AddNoGachaAvatarCardNotify.newBuilder()
                         .setAvatarId(avatar.getAvatarId())
                         .setReason(reason.getValue())
-                        .setInitialLevel(avatar.getLevel())
+                        // .setInitialLevel(avatar.getLevel()) // field not in current proto
                         .setItemId(1000 + (avatar.getAvatarId() % 10000000))
-                        .setInitialPromoteLevel(avatar.getPromoteLevel())
+                        // .setInitialPromoteLevel(avatar.getPromoteLevel()) // field not in current proto
                         .build();
 
         this.setData(proto);
@@ -30,9 +30,9 @@ public class PacketAddNoGachaAvatarCardNotify extends BasePacket {
                 AddNoGachaAvatarCardNotify.newBuilder()
                         .setAvatarId(avatarId)
                         .setReason(reason.getValue())
-                        .setInitialLevel(1)
-                        .setItemId(item.getItemId())
-                        .setInitialPromoteLevel(0)
+                        // .setInitialLevel(1) // field not in current proto
+                        // .setItemId(item.getItemId()) // field not in current proto
+                        // .setInitialPromoteLevel(0) // field not in current proto
                         .build();
 
         this.setData(proto);

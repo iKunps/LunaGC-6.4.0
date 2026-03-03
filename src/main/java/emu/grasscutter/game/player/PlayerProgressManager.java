@@ -257,7 +257,7 @@ public final class PlayerProgressManager extends BasePlayerDataManager {
 
         // this.player.sendPacket(new
         // PacketPlayerPropChangeReasonNotify(this.player.getProperty(PlayerProperty.PROP_PLAYER_EXP),
-        // PlayerProperty.PROP_PLAYER_EXP, PropChangeReason.PROP_CHANGE_REASON_PLAYER_ADD_EXP));
+        // PlayerProperty.PROP_PLAYER_EXP, PropChangeReason.PropChangeReason_PROP_CHANGE_PLAYER_ADD_EXP));
 
         // Fire quest trigger for trans point unlock.
         this.player

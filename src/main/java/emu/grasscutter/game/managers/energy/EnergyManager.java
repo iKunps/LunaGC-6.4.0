@@ -196,7 +196,7 @@ public class EnergyManager extends BasePlayerManager {
 
         // If the player wins the roll, we increase the avatar's energy and reset the probability.
         if (roll < currentProbability) {
-            avatar.addEnergy(1.0f, PropChangeReason.PROP_CHANGE_REASON_ABILITY, true);
+            avatar.addEnergy(1.0f, PropChangeReason.PropChangeReason_PROP_CHANGE_ABILITY, true);
             this.avatarNormalProbabilities.put(avatar, weaponType.getEnergyGainInitialProbability());
         }
         // Otherwise, we increase the probability for the next hit.
@@ -220,7 +220,7 @@ public class EnergyManager extends BasePlayerManager {
         }
 
         // Make sure the target is an actual enemy.
-        GameEntity targetEntity = this.player.getScene().getEntityById(attackRes.getDefenseId());
+        GameEntity targetEntity = null; // this.player.getScene().getEntityById(attackRes.getDefenseId()) - field not in current proto
         if (!(targetEntity instanceof EntityMonster targetMonster)) {
             return;
         }
@@ -418,7 +418,7 @@ public class EnergyManager extends BasePlayerManager {
     public void setEnergyUsage(boolean energyUsage) {
         this.energyUsage = energyUsage;
         if (!energyUsage) { // Refill team energy if usage is disabled
-            this.refillTeamEnergy(PropChangeReason.PROP_CHANGE_REASON_GM, true);
+            this.refillTeamEnergy(PropChangeReason.PropChangeReason_PROP_CHANGE_GM, true);
         }
     }
 }

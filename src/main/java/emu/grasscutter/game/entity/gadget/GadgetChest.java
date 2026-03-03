@@ -33,15 +33,11 @@ public class GadgetChest extends GadgetContent {
             if (chest.boss_chest != null && chest.drop_tag != null) {
                 // Boss chest drop
                 // TODO:check for blossom chests
-                if (req.getOpType() == InterOpType.INTER_OP_TYPE_START) {
-                    // Two steps
-                    player.sendPacket(
-                            new PacketGadgetInteractRsp(
-                                    getGadget(),
-                                    InteractType.INTERACT_TYPE_OPEN_CHEST,
-                                    InterOpType.INTER_OP_TYPE_START));
-                    return false;
-                }
+                // TODO: op_type field is not available in current proto, skipping two-step START check
+                // Original code checked: if (req.getOpType() == InterOpType.INTER_OP_TYPE_START)
+                // to send a START response first, then handle FINISH on second interaction.
+                // Without op_type, we go directly to the FINISH step.
+
                 // TODO:check for take_num.(some boss rewards can only be claimed once a week.). Handle boss
                 // respawn.
                 // TODO:should return Retcode.RET_RESIN_NOT_ENOUGH ?
@@ -58,7 +54,7 @@ public class GadgetChest extends GadgetContent {
                     player.sendPacket(
                             new PacketGadgetInteractRsp(
                                     this.getGadget(),
-                                    InteractTypeOuterClass.InteractType.INTERACT_TYPE_OPEN_CHEST,
+                                    InteractTypeOuterClass.InteractType.InteractType_INTERACT_OPEN_CHEST,
                                     InterOpType.INTER_OP_TYPE_FINISH));
                     return true;
                 }
@@ -79,7 +75,7 @@ public class GadgetChest extends GadgetContent {
                     player.sendPacket(
                             new PacketGadgetInteractRsp(
                                     getGadget(),
-                                    InteractType.INTERACT_TYPE_OPEN_CHEST,
+                                    InteractType.InteractType_INTERACT_OPEN_CHEST,
                                     InterOpType.INTER_OP_TYPE_FINISH));
                     player.sendPacket(
                             new PacketWorldChestOpenNotify(
@@ -112,36 +108,33 @@ public class GadgetChest extends GadgetContent {
             return false;
         }
 
-        if (req.getOpType() == InterOpType.INTER_OP_TYPE_START && handler.isTwoStep()) {
-            player.sendPacket(
-                    new PacketGadgetInteractRsp(
-                            getGadget(), InteractType.INTERACT_TYPE_OPEN_CHEST, InterOpType.INTER_OP_TYPE_START));
-            return false;
+        // TODO: op_type field is not available in current proto.
+        // Original code checked: if (req.getOpType() == InterOpType.INTER_OP_TYPE_START && handler.isTwoStep())
+        // Without op_type, we skip the two-step START and go directly to FINISH.
+
+        boolean success;
+        if (handler instanceof BossChestInteractHandler bossChestInteractHandler) {
+            success =
+                    bossChestInteractHandler.onInteract(
+                            this,
+                            player,
+                            req.getResinCostType()
+                                    == ResinCostTypeOuterClass.ResinCostType.ResinCostType_CONDENSE);
         } else {
-            boolean success;
-            if (handler instanceof BossChestInteractHandler bossChestInteractHandler) {
-                success =
-                        bossChestInteractHandler.onInteract(
-                                this,
-                                player,
-                                req.getResinCostType()
-                                        == ResinCostTypeOuterClass.ResinCostType.RESIN_COST_TYPE_CONDENSE);
-            } else {
-                success = handler.onInteract(this, player);
-            }
-            if (!success) {
-                return false;
-            }
-
-            getGadget().updateState(ScriptGadgetState.ChestOpened);
-            player.sendPacket(
-                    new PacketGadgetInteractRsp(
-                            this.getGadget(),
-                            InteractTypeOuterClass.InteractType.INTERACT_TYPE_OPEN_CHEST,
-                            InterOpType.INTER_OP_TYPE_FINISH));
-
-            return true;
+            success = handler.onInteract(this, player);
         }
+        if (!success) {
+            return false;
+        }
+
+        getGadget().updateState(ScriptGadgetState.ChestOpened);
+        player.sendPacket(
+                new PacketGadgetInteractRsp(
+                        this.getGadget(),
+                        InteractTypeOuterClass.InteractType.InteractType_INTERACT_OPEN_CHEST,
+                        InterOpType.INTER_OP_TYPE_FINISH));
+
+        return true;
     }
 
     public void onBuildProto(SceneGadgetInfo.Builder gadgetInfo) {

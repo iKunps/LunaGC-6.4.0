@@ -11,7 +11,7 @@ import lombok.Getter;
         loadPriority = LoadPriority.LOW)
 @Getter
 public class CookRecipeData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int rankLevel;

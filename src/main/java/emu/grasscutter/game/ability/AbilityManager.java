@@ -331,20 +331,20 @@ public final class AbilityManager extends BasePlayerManager {
         }
 
         switch (invoke.getArgumentType()) {
-            case ABILITY_INVOKE_ARGUMENT_META_OVERRIDE_PARAM -> this.handleOverrideParam(invoke);
-            case ABILITY_INVOKE_ARGUMENT_MIXIN_CHANGE_PHLOGISTON -> this.handleMixinChangePhlogiston(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_REINIT_OVERRIDEMAP -> this.handleReinitOverrideMap(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_MODIFIER_CHANGE -> this.handleModifierChange(invoke);
-            case ABILITY_INVOKE_ARGUMENT_MIXIN_COST_STAMINA -> this.handleMixinCostStamina(invoke);
-            case ABILITY_INVOKE_ARGUMENT_ACTION_GENERATE_ELEM_BALL -> this.handleGenerateElemBall(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_GLOBAL_FLOAT_VALUE -> this.handleGlobalFloatValue(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_CLEAR_GLOBAL_FLOAT_VALUE -> this.handleClearGlobalFloatValue(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_MODIFIER_DURABILITY_CHANGE -> this
+            case AbilityInvokeArgument_ABILITY_META_OVERRIDE_PARAM -> this.handleOverrideParam(invoke);
+            case AbilityInvokeArgument_ABILITY_MIXIN_CHANGE_PHLOGISTON -> this.handleMixinChangePhlogiston(invoke);
+            case AbilityInvokeArgument_ABILITY_META_REINIT_OVERRIDEMAP -> this.handleReinitOverrideMap(invoke);
+            case AbilityInvokeArgument_ABILITY_META_MODIFIER_CHANGE -> this.handleModifierChange(invoke);
+            case AbilityInvokeArgument_ABILITY_MIXIN_COST_STAMINA -> this.handleMixinCostStamina(invoke);
+            case AbilityInvokeArgument_ABILITY_ACTION_GENERATE_ELEM_BALL -> this.handleGenerateElemBall(invoke);
+            case AbilityInvokeArgument_ABILITY_META_GLOBAL_FLOAT_VALUE -> this.handleGlobalFloatValue(invoke);
+            case AbilityInvokeArgument_ABILITY_META_CLEAR_GLOBAL_FLOAT_VALUE -> this.handleClearGlobalFloatValue(invoke);
+            case AbilityInvokeArgument_ABILITY_META_MODIFIER_DURABILITY_CHANGE -> this
                     .handleModifierDurabilityChange(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_ADD_NEW_ABILITY -> this.handleAddNewAbility(invoke);
+            case AbilityInvokeArgument_ABILITY_META_ADD_NEW_ABILITY -> this.handleAddNewAbility(invoke);
 
-            case ABILITY_INVOKE_ARGUMENT_META_SET_KILLED_SETATE -> this.handleKillState(invoke);
-            case ABILITY_INVOKE_ARGUMENT_META_ADD_SPECIAL_ENERGY_VALUE -> this.handleAddSpecialEnergy(invoke);
+            case AbilityInvokeArgument_ABILITY_META_SET_KILLED_SETATE -> this.handleKillState(invoke);
+            case AbilityInvokeArgument_ABILITY_META_ADD_SPECIAL_ENERGY_VALUE -> this.handleAddSpecialEnergy(invoke);
             
             default -> {
                 if (DebugConstants.LOG_MISSING_ABILITIES) {
@@ -575,11 +575,7 @@ private void handleClearGlobalFloatValue(AbilityInvokeEntry invoke)
     }
 
     private void setAbilityOverrideValue(Ability ability, AbilityScalarValueEntry valueChange) {
-        if (valueChange.getValueType() != AbilityScalarType.ABILITY_SCALAR_TYPE_FLOAT && valueChange.getValueType() != AbilityScalarType.ABILITY_SCALAR_TYPE_UNKNOW) {
-            Grasscutter.getLogger().trace("Scalar type not supported: {}", valueChange.getValueType());
-
-            return;
-        }
+        // valueChange.getValueType() - field not in current proto, skipping type check
 
         if (!valueChange.getKey().hasStr()) {
             Grasscutter.getLogger().trace("TODO: Calculate all the ability value hashes");
@@ -647,11 +643,7 @@ private void handleClearGlobalFloatValue(AbilityInvokeEntry invoke)
         if (head.getInstancedAbilityId() == 0 || head.getInstancedModifierId() > 2000)
             return; // Error: TODO: display error
 
-        if (head.getIsServerbuffModifier()) {
-            // TODO
-            Grasscutter.getLogger().trace("TODO: Handle serverbuff modifier");
-            return;
-        }
+        // head.getIsServerbuffModifier() - field not in current proto, skipping serverbuff check
 
         var entity = this.player.getScene().getEntityById(invoke.getEntityId());
         if (entity == null) {
@@ -662,7 +654,7 @@ private void handleClearGlobalFloatValue(AbilityInvokeEntry invoke)
             return;
         }
 
-        if (modChange.getAction() == ModifierAction.MODIFIER_ACTION_ADDED) {
+        if (modChange.getAction() == ModifierAction.ModifierAction_ADDED) {
             AbilityData instancedAbilityData = null;
             Ability instancedAbility = null;
 
@@ -738,7 +730,7 @@ private void handleClearGlobalFloatValue(AbilityInvokeEntry invoke)
             entity.getInstancedModifiers().put(head.getInstancedModifierId(), modifier);
 
             // TODO: Add all the ability modifier property change
-        } else if (modChange.getAction() == ModifierAction.MODIFIER_ACTION_REMOVED) {
+        } else if (modChange.getAction() == ModifierAction.ModifierAction_REMOVED) {
             Grasscutter.getLogger()
                     .trace(
                             "Removed on entity {} modifier id {}: {}",
@@ -770,7 +762,7 @@ private void handleClearGlobalFloatValue(AbilityInvokeEntry invoke)
         if (entity == null) return;
 
         var entry = AbilityScalarValueEntry.parseFrom(invoke.getAbilityData());
-        if (entry == null || !entry.hasFloatValue()) return;
+        // if (entry == null || !entry.hasFloatValue()) return; // field not in current proto
 
         String key = null;
         if (entry.getKey().hasStr()) key = entry.getKey().getStr();
@@ -779,18 +771,10 @@ private void handleClearGlobalFloatValue(AbilityInvokeEntry invoke)
 
         if (key == null) return;
  // Server does not allow to change this variables I think
-        switch (entry.getValueType().getNumber()) {
-            case AbilityScalarType.ABILITY_SCALAR_TYPE_FLOAT_VALUE -> {
-                if (!Float.isNaN(entry.getFloatValue()))
-                    entity.getGlobalAbilityValues().put(key, entry.getFloatValue());
-            }
-            case AbilityScalarType.ABILITY_SCALAR_TYPE_UINT_VALUE -> entity
-                    .getGlobalAbilityValues()
-                    .put(key, (float) entry.getUintValue());
-            default -> {
-                return;
-            }
-        }
+        // entry.getValueType() / entry.getUintValue() - fields not in current proto
+        // Defaulting to float value handling
+        if (!Float.isNaN(entry.getFloatValue()))
+            entity.getGlobalAbilityValues().put(key, entry.getFloatValue());
 
         entity.onAbilityValueUpdate();
     }

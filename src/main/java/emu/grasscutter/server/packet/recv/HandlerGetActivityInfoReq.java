@@ -12,8 +12,9 @@ public class HandlerGetActivityInfoReq extends PacketHandler {
     public void handle(GameSession session, byte[] header, byte[] payload) throws Exception {
         var req = GetActivityInfoReqOuterClass.GetActivityInfoReq.parseFrom(payload);
 
+        // req.getActivityIdListList() - field not in current proto
         session.send(
                 new PacketGetActivityInfoRsp(
-                        new HashSet<>(req.getActivityIdListList()), session.getPlayer().getActivityManager()));
+                        new HashSet<>(), session.getPlayer().getActivityManager()));
     }
 }

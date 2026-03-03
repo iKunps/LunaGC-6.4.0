@@ -13,19 +13,13 @@ public class HandlerGachaWishReq extends PacketHandler {
     public void handle(GameSession session, byte[] header, byte[] payload) throws Exception {
         GachaWishReq req = GachaWishReq.parseFrom(payload);
 
-        GachaBanner banner =
-                session.getServer().getGachaSystem().getGachaBanners().get(req.getGachaScheduleId());
-        PlayerGachaBannerInfo gachaInfo = session.getPlayer().getGachaInfo().getBannerInfo(banner);
-
-        gachaInfo.setFailedChosenItemPulls(0);
-        gachaInfo.setWishItemId(req.getItemId());
-
-        session.send(
-                new PacketGachaWishRsp(
-                        req.getGachaType(),
-                        req.getGachaScheduleId(),
-                        req.getItemId(),
-                        0,
-                        banner.getWishMaxProgress()));
+        // req.getGachaScheduleId(), req.getGachaType() - fields not in current proto
+        // Cannot look up banner without schedule ID; stub response
+        session.send(new PacketGachaWishRsp(
+                0,
+                0,
+                req.getItemId(),
+                0,
+                0));
     }
 }

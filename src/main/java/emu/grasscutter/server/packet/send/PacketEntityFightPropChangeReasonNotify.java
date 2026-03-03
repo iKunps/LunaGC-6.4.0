@@ -6,6 +6,7 @@ import emu.grasscutter.game.props.FightProperty;
 import emu.grasscutter.net.packet.*;
 import emu.grasscutter.net.proto.ChangeEnergyReasonOuterClass.ChangeEnergyReason;
 import emu.grasscutter.net.proto.ChangeHpDebtsReasonOuterClass.ChangeHpDebtsReason;
+import emu.grasscutter.net.proto.ChangHpReasonOuterClass.ChangHpReason;
 import emu.grasscutter.net.proto.ChangeHpReasonOuterClass.ChangeHpReason;
 import emu.grasscutter.net.proto.PropChangeDetailInfoOuterClass.PropChangeDetailInfo;
 import emu.grasscutter.net.proto.AbilityStringOuterClass.AbilityString;
@@ -34,7 +35,7 @@ public class PacketEntityFightPropChangeReasonNotify extends BasePacket {
                         .setPropType(prop.getId())
                         .setPropDelta(value)
                         .setReason(reason)
-                        .setChangeHpReason(changeHpReason);
+                        .setChangeHpReason(ChangHpReason.forNumber(changeHpReason.getNumber()));
 
         for (int p : param) {
             proto.addParamList(p);
@@ -66,8 +67,8 @@ public class PacketEntityFightPropChangeReasonNotify extends BasePacket {
                         .setPropType(prop.getId())
                         .setPropDelta(value)
                         .setReason(reason)
-                        .setDetailInfo(detailInfo != null ? detailInfo : PropChangeDetailInfo.getDefaultInstance())  // Only set if not null
-                        .setChangeHpReason(changeHpReason)
+                        // .setDetailInfo(detailInfo != null ? detailInfo : PropChangeDetailInfo.getDefaultInstance())  // Only set if not null // field not in current proto
+                        .setChangeHpReason(ChangHpReason.forNumber(changeHpReason.getNumber()))
                         .build();
 
         this.setData(proto);
@@ -98,7 +99,7 @@ public class PacketEntityFightPropChangeReasonNotify extends BasePacket {
                         .setEntityId(entity.getId())
                         .setPropType(prop.getId())
                         .setPropDelta(value)
-                        .setChangeEnergyReason(reason)
+                        // .setChangeEnergyReason(reason) // field not in current proto
                         .build();
 
         this.setData(proto);
@@ -125,11 +126,11 @@ public class PacketEntityFightPropChangeReasonNotify extends BasePacket {
                         .setEntityId(entity.getId())
                         .setPropType(prop.getId())
                         .setPropDelta(value)
-                        .setPaidHpDebts(value)
+                        // .setPaidHpDebts(value) // field not in current proto
                         .setReason(reason)
-                        .setDetailInfo(detailInfo != null ? detailInfo : PropChangeDetailInfo.getDefaultInstance())  // Only set if not null
-                        .setChangeHpDebtsReason(changeHpDebts)
-                        .build(); 
+                        // .setDetailInfo(detailInfo != null ? detailInfo : PropChangeDetailInfo.getDefaultInstance())  // Only set if not null // field not in current proto
+                        // .setChangeHpDebtsReason(changeHpDebts) // field not in current proto
+                        .build();
         this.setData(proto);
     }
             
@@ -152,8 +153,8 @@ public class PacketEntityFightPropChangeReasonNotify extends BasePacket {
                     .setPropType(prop.getId())
                     .setPropDelta(value)
                     .setReason(reason)
-                    .setDetailInfo(detailInfo != null ? detailInfo : PropChangeDetailInfo.getDefaultInstance())  // Only set if not null
-                    .setChangeEnergyReason(energyReason)
+                    // .setDetailInfo(detailInfo != null ? detailInfo : PropChangeDetailInfo.getDefaultInstance())  // Only set if not null // field not in current proto
+                    // .setChangeEnergyReason(energyReason) // field not in current proto
                     .build();
 
     this.setData(proto);

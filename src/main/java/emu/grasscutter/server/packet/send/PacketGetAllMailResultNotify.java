@@ -17,10 +17,10 @@ public final class PacketGetAllMailResultNotify extends BasePacket {
 
         var packet =
                 GetAllMailResultNotify.newBuilder()
-                        .setTransaction(player.getUid() + "-" + Utils.getCurrentSeconds() + "-" + 0)
-                        .setIsCollected(gifts)
-                        .setPacketBeSentNum(1)
-                        .setPacketNum(1);
+                        // .setTransaction(player.getUid() + "-" + Utils.getCurrentSeconds() + "-" + 0) // field not in current proto
+                        .setIsCollected(gifts);
+                        // .setPacketBeSentNum(1) // field not in current proto
+                        // .setPacketNum(1) // field not in current proto
 
         var inbox = player.getAllMail();
         if (!gifts && inbox.size() > 0) {

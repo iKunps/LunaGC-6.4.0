@@ -391,7 +391,7 @@ public class StaminaManager extends BasePlayerManager {
 
         // Get the motion data.
         var motionInfo = moveInfo.getMotionInfo();
-        var motionState = motionInfo.getState();
+        var motionState = MotionState.MOTION_STATE_NONE; // motionInfo.getState() - field not in current proto
         var notifyEntityId = entity.getId();
         var currentAvatarEntityId = session.getPlayer().getTeamManager().getCurrentAvatarEntity().getId();
         if (notifyEntityId != currentAvatarEntityId && notifyEntityId != vehicleId) {
@@ -415,7 +415,7 @@ public class StaminaManager extends BasePlayerManager {
     }
 
     public void handleVehicleInteractReq(GameSession session, int vehicleId, VehicleInteractType vehicleInteractType) {
-        if (vehicleInteractType == VehicleInteractType.VEHICLE_INTERACT_TYPE_IN) {
+        if (vehicleInteractType == VehicleInteractType.VehicleInteractType_VEHICLE_INTERACT_IN) {
             this.vehicleId = vehicleId;
             // Reset character stamina here to prevent falling into water immediately on ejection if char stamina is
             //      close to empty when boarding.
@@ -526,7 +526,7 @@ public class StaminaManager extends BasePlayerManager {
             logger.trace(getCurrentCharacterStamina() + "/" +
                 getMaxCharacterStamina() + "\t" + currentState);
             if (currentState != MotionState.MOTION_STATE_SWIM_IDLE) {
-                killAvatar(cachedSession, cachedEntity, PlayerDieType.PLAYER_DIE_TYPE_DRAWN);
+                killAvatar(cachedSession, cachedEntity, PlayerDieType.PlayerDieType_PLAYER_DIE_DRAWN);
             }
         }
     }

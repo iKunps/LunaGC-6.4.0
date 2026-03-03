@@ -10,12 +10,12 @@ public class PacketWidgetCoolDownNotify extends BasePacket {
 
         WidgetCoolDownNotifyOuterClass.WidgetCoolDownNotify proto =
                 WidgetCoolDownNotifyOuterClass.WidgetCoolDownNotify.newBuilder()
-                        .addGroupCoolDownDataList(
-                                WidgetCoolDownDataOuterClass.WidgetCoolDownData.newBuilder()
-                                        .setId(id)
-                                        .setCoolDownTime(coolDownTime)
-                                        .setIsSuccess(isSuccess)
-                                        .build())
+                        // .addGroupCoolDownDataList( // field not in current proto
+                        //         WidgetCoolDownDataOuterClass.WidgetCoolDownData.newBuilder()
+                        //                 .setId(id)
+                        //                 .setCoolDownTime(coolDownTime)
+                        //                 .setIsSuccess(isSuccess)
+                        //                 .build())
                         .build();
 
         this.setData(proto);

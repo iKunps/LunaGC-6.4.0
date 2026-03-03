@@ -13,8 +13,8 @@ public class PacketResinChangeNotify extends BasePacket {
         ResinChangeNotify proto =
                 ResinChangeNotify.newBuilder()
                         .setCurValue(player.getProperty(PlayerProperty.PROP_PLAYER_RESIN))
-                        .setNextAddTimestamp(player.getNextResinRefresh())
-                        .setCurBuyCount(player.getResinBuyCount())
+                        // .setNextAddTimestamp(player.getNextResinRefresh()) // field not in current proto
+                        // .setCurBuyCount(player.getResinBuyCount()) // field not in current proto
                         .build();
 
         this.setData(proto);

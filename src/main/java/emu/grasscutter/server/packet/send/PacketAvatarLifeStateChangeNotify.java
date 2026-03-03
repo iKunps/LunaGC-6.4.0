@@ -31,7 +31,7 @@ public class PacketAvatarLifeStateChangeNotify extends BasePacket {
                 AvatarLifeStateChangeNotify.newBuilder()
                         .setAvatarGuid(avatar.getGuid())
                         .setLifeState(lifeState.getValue())
-                        .setMoveReliableSeq(attackerId)
+                        // .setMoveReliableSeq(attackerId) // field not in current proto
                         .build();
 
         this.setData(proto);

@@ -13,12 +13,12 @@ public class PacketStoreWeightLimitNotify extends BasePacket {
 
         StoreWeightLimitNotify p =
                 StoreWeightLimitNotify.newBuilder()
-                        .setStoreType(StoreType.STORE_TYPE_PACK)
+                        // .setStoreType(StoreType.StoreType_STORE_PACK) // field not in current proto
                         .setWeightLimit(INVENTORY_LIMITS.all)
-                        .setWeaponCountLimit(INVENTORY_LIMITS.weapons)
-                        .setReliquaryCountLimit(INVENTORY_LIMITS.relics)
-                        .setMaterialCountLimit(INVENTORY_LIMITS.materials)
-                        .setFurnitureCountLimit(INVENTORY_LIMITS.furniture)
+                        // .setWeaponCountLimit(INVENTORY_LIMITS.weapons) // field not in current proto
+                        // .setReliquaryCountLimit(INVENTORY_LIMITS.relics) // field not in current proto
+                        // .setMaterialCountLimit(INVENTORY_LIMITS.materials) // field not in current proto
+                        // .setFurnitureCountLimit(INVENTORY_LIMITS.furniture) // field not in current proto
                         .build();
 
         this.setData(p);

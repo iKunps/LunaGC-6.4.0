@@ -11,9 +11,7 @@ public class HandlerDestroyMaterialReq extends PacketHandler {
         DestroyMaterialReq req = DestroyMaterialReq.parseFrom(payload);
 
         // Delete items
-        session
-                .getServer()
-                .getInventorySystem()
-                .destroyMaterial(session.getPlayer(), req.getMaterialListList());
+        // session.getServer().getInventorySystem().destroyMaterial(session.getPlayer(), req.getMaterialListList());
+        // destroyMaterial method disabled - MaterilaInfo type mismatch in proto
     }
 }

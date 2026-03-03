@@ -13,12 +13,13 @@ public class PacketFinishedParentQuestNotify extends BasePacket {
 
         FinishedParentQuestNotify.Builder proto = FinishedParentQuestNotify.newBuilder();
 
-        for (GameMainQuest mainQuest : player.getQuestManager().getMainQuests().values()) {
-            // Canceled Quests do not appear in this packet
-            if (mainQuest.getState() != ParentQuestState.PARENT_QUEST_STATE_CANCELED) {
-                proto.addParentQuestList(mainQuest.toProto(false));
-            }
-        }
+        // addParentQuestList not in current proto
+        // for (GameMainQuest mainQuest : player.getQuestManager().getMainQuests().values()) {
+        //     // Canceled Quests do not appear in this packet
+        //     if (mainQuest.getState() != ParentQuestState.PARENT_QUEST_STATE_CANCELED) {
+        //         proto.addParentQuestList(mainQuest.toProto(false));
+        //     }
+        // }
 
         this.setData(proto);
     }

@@ -150,7 +150,7 @@ public final class PFJJKNFPBEEOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (iCCICKGFCOH_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DUNGEON_CANDIDATE_TEAM_PLAYER_STATE_IDLE.getNumber()) {
+      if (iCCICKGFCOH_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DungeonCandidateTeamPlayerState_IDLE.getNumber()) {
         output.writeEnum(5, iCCICKGFCOH_);
       }
       unknownFields.writeTo(output);
@@ -162,7 +162,7 @@ public final class PFJJKNFPBEEOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (iCCICKGFCOH_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DUNGEON_CANDIDATE_TEAM_PLAYER_STATE_IDLE.getNumber()) {
+      if (iCCICKGFCOH_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DungeonCandidateTeamPlayerState_IDLE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, iCCICKGFCOH_);
       }

@@ -40,12 +40,11 @@ public class PacketPlayerWorldSceneInfoListNotify extends BasePacket {
             if (scene == 3) {
                 worldInfoBuilder.setMapLayerInfo(
                         MapLayerInfoOuterClass.MapLayerInfo.newBuilder()
-                                .addAllUnlockedMapLayerIdList(
-                                        GameData.getMapLayerDataMap().keySet()) // MapLayer Ids
-                                .addAllUnlockedMapLayerFloorIdList(GameData.getMapLayerFloorDataMap().keySet())
-                                .addAllUnlockedMapLayerGroupIdList(
-                                        GameData.getMapLayerGroupDataMap()
-                                                .keySet()) // will show MapLayer options when hovered over
+                                // .addAllUnlockedMapLayerIdList(GameData.getMapLayerDataMap().keySet()) // field not in current proto
+                                // .addAllUnlockedMapLayerFloorIdList(GameData.getMapLayerFloorDataMap().keySet()) // field not in current proto
+                                // .addAllUnlockedMapLayerGroupIdList(
+                                //         GameData.getMapLayerGroupDataMap()
+                                //                 .keySet()) // will show MapLayer options when hovered over // field not in current proto
                                 .build()); // map layer test
             }
 

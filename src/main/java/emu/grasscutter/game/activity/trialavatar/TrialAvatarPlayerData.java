@@ -79,8 +79,8 @@ public class TrialAvatarPlayerData {
             return TrialAvatarActivityRewardDetailInfo.newBuilder()
                     .setTrialAvatarIndexId(getTrialAvatarIndexId())
                     .setRewardId(getRewardId())
-                    .setPassedDungeon(isPassedDungeon())
-                    .setReceivedReward(isReceivedReward())
+                    // .setPassedDungeon(isPassedDungeon()) // field not in current proto
+                    // .setReceivedReward(isReceivedReward()) // field not in current proto
                     .build();
         }
     }

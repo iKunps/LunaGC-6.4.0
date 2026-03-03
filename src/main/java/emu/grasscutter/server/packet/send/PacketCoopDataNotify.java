@@ -41,7 +41,7 @@ public class PacketCoopDataNotify extends BasePacket {
                                 chapter.addCoopPointList(point);
                             }
 
-                            proto.addChapterList(chapter);
+                            // proto.addChapterList(chapter); // field not in current proto
                         });
 
         this.setData(proto);

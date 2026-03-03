@@ -13,8 +13,8 @@ public class PacketQueryPathRsp extends BasePacket {
         proto
                 .addCorners(req.getSourcePos())
                 .addCorners(req.getDestinationPos(0))
-                .setQueryId(req.getQueryId())
-                .setQueryStatus(QueryPathRspOuterClass.QueryPathRsp.PathStatusType.PATH_STATUS_TYPE_SUCC);
+                .setQueryId(req.getQueryId());
+                // .setQueryStatus(QueryPathRspOuterClass.QueryPathRsp.PathStatusType.PathStatusType_STATUS_SUCC) // field not in current proto
 
         this.setData(proto);
     }

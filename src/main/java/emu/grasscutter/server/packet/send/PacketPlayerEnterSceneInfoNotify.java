@@ -29,7 +29,7 @@ public class PacketPlayerEnterSceneInfoNotify extends BasePacket {
                         .setStr("SGV_PlayerTeam_Phlogiston")
                         .build())
                         .setFloatValue(100)
-                .setValueType(AbilityScalarType.ABILITY_SCALAR_TYPE_FLOAT)
+                // .setValueType(AbilityScalarType.ABILITY_SCALAR_TYPE_FLOAT) // field not in current proto
                 .build();
                 player.setPhlogistonValue(100);
 
@@ -64,8 +64,8 @@ public class PacketPlayerEnterSceneInfoNotify extends BasePacket {
                             .setAvatarEntityId(avatarEntity.getId())
                             .setWeaponGuid(weaponGuid)
                             .setWeaponEntityId(avatarEntity.getWeaponEntityId())
-                            .setAvatarAbilityInfo(AbilitySyncStateInfo.newBuilder())
-                            .setWeaponAbilityInfo(AbilitySyncStateInfo.newBuilder())
+                            // .setAvatarAbilityInfo(AbilitySyncStateInfo.newBuilder()) // field not in current proto
+                            // .setWeaponAbilityInfo(AbilitySyncStateInfo.newBuilder()) // field not in current proto
                             .build();
 
             proto.addAvatarEnterInfo(avatarInfo);

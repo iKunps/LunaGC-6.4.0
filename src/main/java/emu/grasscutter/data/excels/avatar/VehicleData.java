@@ -13,7 +13,7 @@ import java.util.*;
     @ResourceType(name = "VehicleExcelConfigData.json", loadPriority = LoadPriority.LOW)
     public class VehicleData extends GameResource {
 
-        @Getter(onMethod_ = @Override)
+        @Getter
         private int id;
 
         @Getter

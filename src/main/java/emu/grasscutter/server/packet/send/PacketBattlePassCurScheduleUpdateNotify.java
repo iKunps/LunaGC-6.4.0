@@ -12,7 +12,7 @@ public class PacketBattlePassCurScheduleUpdateNotify extends BasePacket {
         var proto = BattlePassCurScheduleUpdateNotify.newBuilder();
 
         proto
-                .setHaveCurSchedule(true)
+                // .setHaveCurSchedule(true) // field not in current proto
                 .setCurSchedule(player.getBattlePassManager().getScheduleProto())
                 .build();
 

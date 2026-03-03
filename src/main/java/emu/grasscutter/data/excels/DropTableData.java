@@ -11,7 +11,7 @@ import lombok.Getter;
         loadPriority = LoadPriority.HIGH)
 @Getter
 public class DropTableData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int randomType;

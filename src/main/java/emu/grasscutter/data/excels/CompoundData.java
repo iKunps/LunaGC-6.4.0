@@ -11,7 +11,7 @@ import lombok.Getter;
         loadPriority = ResourceType.LoadPriority.LOW)
 @Getter
 public class CompoundData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     @SerializedName("groupID")

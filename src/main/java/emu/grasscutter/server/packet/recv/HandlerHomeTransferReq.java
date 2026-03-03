@@ -16,15 +16,8 @@ public class HandlerHomeTransferReq extends PacketHandler {
         var home = player.getCurHomeWorld().getHome();
         var item = home.getHomeSceneItem(player.getSceneId());
 
-        var pos =
-                req.getIsTransferToMainHousePoint()
-                        ? item.getBornPos()
-                        : player
-                                .getCurHomeWorld()
-                                .getSceneById(player.getSceneId())
-                                .getScriptManager()
-                                .getConfig()
-                                .born_pos;
+        // req.getIsTransferToMainHousePoint() - field not in current proto, defaulting to born pos
+        var pos = item.getBornPos();
         if (req.getGuid() != 0) {
             var target = item.getTeleportPointPos(req.getGuid());
             if (target != null) {

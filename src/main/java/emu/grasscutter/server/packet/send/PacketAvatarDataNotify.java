@@ -13,9 +13,9 @@ public class PacketAvatarDataNotify extends BasePacket {
         AvatarDataNotify.Builder proto =
                 AvatarDataNotify.newBuilder()
                         .setCurAvatarTeamId(player.getTeamManager().getCurrentTeamId())
-                        .setChooseAvatarGuid(player.getTeamManager().getCurrentCharacterGuid())
-                        .addAllOwnedFlycloakList(player.getFlyCloakList())
-                        .addAllOwnedCostumeList(player.getCostumeList());
+                        .setChooseAvatarGuid(player.getTeamManager().getCurrentCharacterGuid());
+                        // .addAllOwnedFlycloakList(player.getFlyCloakList()) // field not in current proto
+                        // .addAllOwnedCostumeList(player.getCostumeList()) // field not in current proto
 
         player.getAvatars().forEach(avatar -> proto.addAvatarList(avatar.toProto()));
 

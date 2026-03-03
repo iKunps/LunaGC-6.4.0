@@ -37,7 +37,7 @@ public final class HealCommand implements CommandHandler {
                                     entity
                                     .getWorld()
                                     .broadcastPacket(new PacketEntityFightPropUpdateNotify(entity, FightProperty.FIGHT_PROP_CUR_HP_DEBTS));
-                                    entity.getWorld().broadcastPacket(new PacketEntityFightPropChangeReasonNotify(entity, FightProperty.FIGHT_PROP_CUR_HP_DEBTS, 0f, PropChangeReason.PROP_CHANGE_REASON_NONE,
+                                    entity.getWorld().broadcastPacket(new PacketEntityFightPropChangeReasonNotify(entity, FightProperty.FIGHT_PROP_CUR_HP_DEBTS, 0f, PropChangeReason.PropChangeReason_PROP_CHANGE_NONE,
                                           
                                     ChangeHpDebtsReason.CHANGE_HP_DEBTS_PAY_FINISH
                                    )); 

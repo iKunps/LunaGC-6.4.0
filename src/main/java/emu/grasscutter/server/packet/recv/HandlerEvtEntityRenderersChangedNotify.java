@@ -14,22 +14,10 @@ public class HandlerEvtEntityRenderersChangedNotify extends PacketHandler {
                 EvtEntityRenderersChangedNotifyOuterClass.EvtEntityRenderersChangedNotify.parseFrom(
                         payload);
 
-        switch (req.getForwardType()) {
-            case FORWARD_TYPE_TO_ALL -> session
-                    .getPlayer()
-                    .getScene()
-                    .broadcastPacket(new PacketEvtEntityRenderersChangedNotify(req));
-            case FORWARD_TYPE_TO_ALL_EXCEPT_CUR -> session
-                    .getPlayer()
-                    .getScene()
-                    .broadcastPacketToOthers(
-                            session.getPlayer(), new PacketEvtEntityRenderersChangedNotify(req));
-            case FORWARD_TYPE_TO_HOST -> session
-                    .getPlayer()
-                    .getScene()
-                    .getWorld()
-                    .getHost()
-                    .sendPacket(new PacketEvtEntityRenderersChangedNotify(req));
-        }
+        // req.getForwardType() - field not in current proto, default to broadcast to all
+        session
+                .getPlayer()
+                .getScene()
+                .broadcastPacket(new PacketEvtEntityRenderersChangedNotify(req));
     }
 }

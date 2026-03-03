@@ -213,60 +213,15 @@ public class GachaBanner {
                 };
         GachaInfo.Builder info =
                 GachaInfo.newBuilder()
-                        .setGachaType(this.getGachaType())
+                        // .setGachaType(this.getGachaType()) // field not in current proto
                         .setScheduleId(this.getScheduleId())
                         .setBeginTime(this.getBeginTime())
-                        .setEndTime(this.getEndTime())
-                        .setCostItemId(this.costItemId)
-                        .setCostItemNum(this.costItemAmount)
-                        .setTenCostItemId(this.costItemId10)
-                        .setTenCostItemNum(this.costItemAmount10)
-                        .setGachaPrefabPath(this.getPrefabPath())
-                        .setGachaPreviewPrefabPath(this.getPreviewPrefabPath())
-                        .setGachaProbUrl(details)
-                        .setGachaProbUrlOversea(details)
-                        .setGachaRecordUrl(record)
-                        .setGachaRecordUrlOversea(record)
-                        .setLeftGachaTimes(leftGachaTimes)
-                        .setGachaTimesLimit(gachaTimesLimit)
-                        .setGachaSortId(this.getSortId());
+                        .setEndTime(this.getEndTime());
+                        // Many GachaInfo fields not in current proto:
+                        // costItemId, costItemNum, tenCostItemId, tenCostItemNum,
+                        // gachaPrefabPath, gachaPreviewPrefabPath, gachaProbUrl, etc.
 
-        if (hasEpitomized()) {
-            info.setWishItemId(gachaInfo.getWishItemId())
-                    .setIsNewWish(gachaInfo.getWishItemId() == 0 ? true : false) // ask player set if not set yet
-                    .setWishProgress(gachaInfo.getFailedChosenItemPulls())
-                    .setWishMaxProgress(this.getWishMaxProgress());
-        }
-
-        if (this.getTitlePath() != null) {
-            info.setTitleTextmap(this.getTitlePath());
-        }
-
-        if (this.getRateUpItems5().length > 0) {
-            GachaUpInfo.Builder upInfo = GachaUpInfo.newBuilder().setItemParentType(1);
-
-            for (int id : getRateUpItems5()) {
-                upInfo.addItemIdList(id);
-                info.addDisplayUp5ItemList(id);
-                // NEEDED for new chronicle wish or else selector bugs
-                if (hasEpitomized()) info.addDisplayChronicle5ItemList(id);
-            }
-
-            info.addGachaUpInfoList(upInfo);
-        }
-
-        if (this.getRateUpItems4().length > 0) {
-            GachaUpInfo.Builder upInfo = GachaUpInfo.newBuilder().setItemParentType(2);
-
-            for (int id : getRateUpItems4()) {
-                upInfo.addItemIdList(id);
-                if (info.getDisplayUp4ItemListCount() == 0) {
-                    info.addDisplayUp4ItemList(id);
-                }
-            }
-
-            info.addGachaUpInfoList(upInfo);
-        }
+        // hasEpitomized, titlePath, rateUpItems - fields not in current proto
 
         return info.build();
     }

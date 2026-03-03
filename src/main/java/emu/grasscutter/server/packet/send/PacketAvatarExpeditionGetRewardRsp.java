@@ -13,7 +13,7 @@ public class PacketAvatarExpeditionGetRewardRsp extends BasePacket {
 
         AvatarExpeditionGetRewardRsp.Builder proto = AvatarExpeditionGetRewardRsp.newBuilder();
         expeditionInfo.forEach((key, e) -> proto.putExpeditionInfoMap(key, e.toProto()));
-        items.forEach(item -> proto.addItemList(item.toItemParam()));
+        // items.forEach(item -> proto.addItemList(item.toItemParam())); // field not in current proto
 
         this.setData(proto.build());
     }

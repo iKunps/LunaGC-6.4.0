@@ -16,7 +16,8 @@ import emu.grasscutter.net.proto.EnterTypeOuterClass.EnterType;
 import emu.grasscutter.net.proto.MotionStateOuterClass.MotionState;
 import emu.grasscutter.net.proto.PlayerDieTypeOuterClass.PlayerDieType;
 import emu.grasscutter.net.proto.RetcodeOuterClass.Retcode;
-import emu.grasscutter.net.proto.TrialAvatarGrantRecordOuterClass.TrialAvatarGrantRecord.GrantReason;
+// GrantReason enum removed from proto; using int constants instead
+// GRANT_REASON_BY_QUEST = 1, GRANT_REASON_BY_TRIAL_AVATAR_ACTIVITY = 2
 import emu.grasscutter.server.event.entity.EntityCreationEvent;
 import emu.grasscutter.server.event.player.*;
 import emu.grasscutter.server.packet.send.*;
@@ -560,7 +561,7 @@ public final class TeamManager extends BasePlayerDataManager {
                         x ->
                                 this.getPlayer()
                                         .getScene()
-                                        .removeEntity(x, VisionTypeOuterClass.VisionType.VISION_TYPE_REMOVE));
+                                        .removeEntity(x, VisionTypeOuterClass.VisionType.VisionType_VISION_REMOVE));
         // Remove the existing avatar from the teams if it exists.
         this.getActiveTeam().removeIf(x -> x.getAvatar().getAvatarId() == trialAvatar.getAvatarId());
         this.getCurrentTeamInfo().getAvatars().removeIf(x -> x == trialAvatar.getAvatarId());
@@ -636,7 +637,7 @@ public final class TeamManager extends BasePlayerDataManager {
                 .forEach(
                         avatarEntity ->
                                 scene.removeEntity(
-                                        avatarEntity, VisionTypeOuterClass.VisionType.VISION_TYPE_REMOVE));
+                                        avatarEntity, VisionTypeOuterClass.VisionType.VisionType_VISION_REMOVE));
 
         if (isTeam) {
             this.getActiveTeam().clear();
@@ -828,7 +829,7 @@ public final class TeamManager extends BasePlayerDataManager {
         PlayerDieType dieType = deadAvatar.getKilledType();
         int killedBy = deadAvatar.getKilledBy();
 
-        if (dieType == PlayerDieType.PLAYER_DIE_TYPE_DRAWN) {
+        if (dieType == PlayerDieType.PlayerDieType_PLAYER_DIE_DRAWN) {
             // Died in water. Do not replace
             // The official server has skipped this notify and will just respawn the team immediately
             // after the animation.
@@ -951,7 +952,7 @@ public final class TeamManager extends BasePlayerDataManager {
                     .sendPacket(
                             new PacketPlayerEnterSceneNotify(
                                     this.getPlayer(),
-                                    EnterType.ENTER_TYPE_SELF,
+                                    EnterType.EnterType_ENTER_SELF,
                                     EnterReason.Revival,
                                     this.getPlayer().getSceneId(),
                                     this.getRespawnPosition()));
@@ -961,7 +962,7 @@ public final class TeamManager extends BasePlayerDataManager {
                     .sendPacket(
                             new PacketPlayerEnterSceneNotify(
                                     this.getPlayer(),
-                                    EnterType.ENTER_TYPE_SELF,
+                                    EnterType.EnterType_ENTER_SELF,
                                     EnterReason.Revival,
                                     3,
                                     GameConstants.START_POSITION));
@@ -1117,7 +1118,7 @@ public final class TeamManager extends BasePlayerDataManager {
      * @param reason The reason for granting the avatar.
      * @return True if the avatar was added, false otherwise.
      */
-    public boolean addTrialAvatar(int avatarId, int questMainId, GrantReason reason) {
+    public boolean addTrialAvatar(int avatarId, int questMainId, int reason) {
         List<Integer> trialAvatarBasicParam = getTrialAvatarParam(avatarId);
         if (trialAvatarBasicParam.isEmpty()) return false;
 
@@ -1188,8 +1189,8 @@ public final class TeamManager extends BasePlayerDataManager {
                                     trialAvatarId,
                                     questId,
                                     questId != 0
-                                            ? GrantReason.GRANT_REASON_BY_QUEST
-                                            : GrantReason.GRANT_REASON_BY_TRIAL_AVATAR_ACTIVITY);
+                                            ? 1 /* GRANT_REASON_BY_QUEST */
+                                            : 2 /* GRANT_REASON_BY_TRIAL_AVATAR_ACTIVITY */);
 
                     if (!result) throw new RuntimeException("Unable to add trial avatar to team.");
                 });

@@ -248,10 +248,10 @@ public final class ServerLogNotifyOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverLog_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serverLog_);
       }
-      if (logLevel_ != emu.grasscutter.net.proto.ServerLogLevelOuterClass.ServerLogLevel.LOG_LEVEL_NONE.getNumber()) {
+      if (logLevel_ != emu.grasscutter.net.proto.ServerLogLevelOuterClass.ServerLogLevel.ServerLogLevel_LOG_LEVEL_NONE.getNumber()) {
         output.writeEnum(8, logLevel_);
       }
-      if (logType_ != emu.grasscutter.net.proto.ServerLogTypeOuterClass.ServerLogType.SERVER_LOG_NONE.getNumber()) {
+      if (logType_ != emu.grasscutter.net.proto.ServerLogTypeOuterClass.ServerLogType.ServerLogType_SERVER_LOG_NONE.getNumber()) {
         output.writeEnum(14, logType_);
       }
       unknownFields.writeTo(output);
@@ -266,11 +266,11 @@ public final class ServerLogNotifyOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverLog_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serverLog_);
       }
-      if (logLevel_ != emu.grasscutter.net.proto.ServerLogLevelOuterClass.ServerLogLevel.LOG_LEVEL_NONE.getNumber()) {
+      if (logLevel_ != emu.grasscutter.net.proto.ServerLogLevelOuterClass.ServerLogLevel.ServerLogLevel_LOG_LEVEL_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(8, logLevel_);
       }
-      if (logType_ != emu.grasscutter.net.proto.ServerLogTypeOuterClass.ServerLogType.SERVER_LOG_NONE.getNumber()) {
+      if (logType_ != emu.grasscutter.net.proto.ServerLogTypeOuterClass.ServerLogType.ServerLogType_SERVER_LOG_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(14, logType_);
       }

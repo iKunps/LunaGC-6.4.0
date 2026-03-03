@@ -112,8 +112,7 @@ public class HomeWorld extends World {
                                 0,
                                 ChatInfoOuterClass.ChatInfo.SystemHint.newBuilder()
                                         .setType(
-                                                ChatInfoOuterClass.ChatInfo.SystemHintType.SYSTEM_HINT_TYPE_CHAT_ENTER_WORLD
-                                                        .getNumber())
+                                                1 /* SYSTEM_HINT_TYPE_CHAT_ENTER_WORLD */)
                                         .build()));
             }
         }
@@ -163,8 +162,7 @@ public class HomeWorld extends World {
                         0,
                         ChatInfoOuterClass.ChatInfo.SystemHint.newBuilder()
                                 .setType(
-                                        ChatInfoOuterClass.ChatInfo.SystemHintType.SYSTEM_HINT_TYPE_CHAT_LEAVE_WORLD
-                                                .getNumber())
+                                        2 /* SYSTEM_HINT_TYPE_CHAT_LEAVE_WORLD */)
                                 .build()));
     }
 

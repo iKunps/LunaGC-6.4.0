@@ -39,17 +39,17 @@ public class PacketTowerAllDataRsp extends BasePacket {
 
         TowerAllDataRsp proto =
                 TowerAllDataRsp.newBuilder()
-                        .setTowerScheduleId(towerScheduleManager.getCurrentTowerScheduleData().getScheduleId())
+                        // .setTowerScheduleId(towerScheduleManager.getCurrentTowerScheduleData().getScheduleId()) // field not in current proto
                         .addAllTowerFloorRecordList(recordList)
                         .setCurLevelRecord(TowerCurLevelRecord.newBuilder().setIsEmpty(true))
-                        .setScheduleStartTime(
-                                DateHelper.getUnixTime(
-                                        towerScheduleManager.getTowerScheduleConfig().getScheduleStartTime()))
-                        .setNextScheduleChangeTime(
-                                DateHelper.getUnixTime(
-                                        towerScheduleManager.getTowerScheduleConfig().getNextScheduleChangeTime()))
-                        .putAllFloorOpenTimeMap(openTimeMap)
-                        .setIsFinishedEntranceFloor(towerManager.canEnterScheduleFloor())
+                        // .setScheduleStartTime( // field not in current proto
+                        //         DateHelper.getUnixTime(
+                        //                 towerScheduleManager.getTowerScheduleConfig().getScheduleStartTime()))
+                        // .setNextScheduleChangeTime( // field not in current proto
+                        //         DateHelper.getUnixTime(
+                        //                 towerScheduleManager.getTowerScheduleConfig().getNextScheduleChangeTime()))
+                        // .putAllFloorOpenTimeMap(openTimeMap) // field not in current proto
+                        // .setIsFinishedEntranceFloor(towerManager.canEnterScheduleFloor()) // field not in current proto
                         .build();
 
         this.setData(proto);

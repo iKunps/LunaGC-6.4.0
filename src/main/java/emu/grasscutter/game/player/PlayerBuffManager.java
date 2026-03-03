@@ -51,7 +51,7 @@ public final class PlayerBuffManager extends BasePlayerManager {
                 .sendPacket(
                         new PacketServerBuffChangeNotify(
                                 getPlayer(),
-                                ServerBuffChangeType.SERVER_BUFF_CHANGE_TYPE_DEL_SERVER_BUFF,
+                                ServerBuffChangeType.ServerBuffChangeType_DEL_SERVER_BUFF,
                                 this.buffs.values()));
 
         // Clear
@@ -142,7 +142,7 @@ public final class PlayerBuffManager extends BasePlayerManager {
         getPlayer()
                 .sendPacket(
                         new PacketServerBuffChangeNotify(
-                                getPlayer(), ServerBuffChangeType.SERVER_BUFF_CHANGE_TYPE_ADD_SERVER_BUFF, buff));
+                                getPlayer(), ServerBuffChangeType.ServerBuffChangeType_ADD_SERVER_BUFF, buff));
 
         return true;
     }
@@ -160,7 +160,7 @@ public final class PlayerBuffManager extends BasePlayerManager {
             getPlayer()
                     .sendPacket(
                             new PacketServerBuffChangeNotify(
-                                    getPlayer(), ServerBuffChangeType.SERVER_BUFF_CHANGE_TYPE_DEL_SERVER_BUFF, buff));
+                                    getPlayer(), ServerBuffChangeType.ServerBuffChangeType_DEL_SERVER_BUFF, buff));
             return true;
         }
 
@@ -189,7 +189,7 @@ public final class PlayerBuffManager extends BasePlayerManager {
                     .sendPacket(
                             new PacketServerBuffChangeNotify(
                                     getPlayer(),
-                                    ServerBuffChangeType.SERVER_BUFF_CHANGE_TYPE_DEL_SERVER_BUFF,
+                                    ServerBuffChangeType.ServerBuffChangeType_DEL_SERVER_BUFF,
                                     this.pendingBuffs));
             this.pendingBuffs.clear();
         }

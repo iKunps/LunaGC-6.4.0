@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter // TODO: remove this next API break
 public class DungeonEntryData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int dungeonEntryId;

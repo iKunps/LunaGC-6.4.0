@@ -254,7 +254,7 @@ public final class DropItemReqOuterClass {
       if (pos_ != null) {
         output.writeMessage(5, getPos());
       }
-      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.STORE_TYPE_NONE.getNumber()) {
+      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.StoreType_STORE_NONE.getNumber()) {
         output.writeEnum(10, storeType_);
       }
       if (count_ != 0) {
@@ -277,7 +277,7 @@ public final class DropItemReqOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getPos());
       }
-      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.STORE_TYPE_NONE.getNumber()) {
+      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.StoreType_STORE_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(10, storeType_);
       }

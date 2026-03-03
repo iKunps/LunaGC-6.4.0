@@ -12,7 +12,7 @@ public class PacketEntityAiSyncNotify extends BasePacket {
         EntityAiSyncNotify.Builder proto = EntityAiSyncNotify.newBuilder();
 
         for (int monsterId : notify.getLocalAvatarAlertedMonsterListList()) {
-            proto.addInfoList(AiSyncInfo.newBuilder().setEntityId(monsterId).setHasPathToTarget(true));
+            proto.addInfoList(AiSyncInfo.newBuilder().setEntityId(monsterId)/* .setHasPathToTarget(true) // field not in current proto */);
         }
 
         this.setData(proto);

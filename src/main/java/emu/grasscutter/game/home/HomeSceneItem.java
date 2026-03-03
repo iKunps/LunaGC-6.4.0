@@ -63,8 +63,8 @@ public class HomeSceneItem {
         }
 
         this.bornPos = new Position(arrangementInfo.getBornPos());
-        this.bornRot = new Position(arrangementInfo.getBornRot());
-        this.djinnPos = new Position(arrangementInfo.getDjinnPos());
+        // this.bornRot = new Position(arrangementInfo.getBornRot()); // field not in current proto
+        // this.djinnPos = new Position(arrangementInfo.getDjinnPos()); // field not in current proto
         this.homeBgmId = arrangementInfo.getBgmId();
 
         if (!this.isRoom() && arrangementInfo.hasMainHouse()) {
@@ -124,9 +124,9 @@ public class HomeSceneItem {
         proto
                 .setComfortValue(calComfort())
                 .setBornPos(bornPos.toProto())
-                .setBornRot(bornRot.toProto())
-                .setDjinnPos(djinnPos.toProto())
-                .setIsSetBornPos(true)
+                // .setBornRot(bornRot.toProto()) // field not in current proto
+                // .setDjinnPos(djinnPos.toProto()) // field not in current proto
+                // .setIsSetBornPos(true) // field not in current proto
                 .setSceneId(sceneId)
                 .setBgmId(homeBgmId)
                 .setTmpVersion(tmpVersion);

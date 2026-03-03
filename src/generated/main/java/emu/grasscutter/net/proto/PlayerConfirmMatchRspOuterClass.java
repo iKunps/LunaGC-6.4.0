@@ -217,7 +217,7 @@ public final class PlayerConfirmMatchRspOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MATCH_TYPE_NONE.getNumber()) {
+      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MatchType_NONE.getNumber()) {
         output.writeEnum(1, matchType_);
       }
       if (matchId_ != 0) {
@@ -238,7 +238,7 @@ public final class PlayerConfirmMatchRspOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MATCH_TYPE_NONE.getNumber()) {
+      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MatchType_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, matchType_);
       }

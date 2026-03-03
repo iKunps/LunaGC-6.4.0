@@ -11,7 +11,9 @@ public class PacketQuestListUpdateNotify extends BasePacket {
         super(PacketOpcodes.QuestListUpdateNotify);
 
         QuestListUpdateNotify proto =
-                QuestListUpdateNotify.newBuilder().addQuestList(quest.toProto()).build();
+                QuestListUpdateNotify.newBuilder()
+                // .addQuestList(quest.toProto()) // field not in current proto
+                .build();
 
         this.setData(proto);
     }
@@ -19,9 +21,9 @@ public class PacketQuestListUpdateNotify extends BasePacket {
     public PacketQuestListUpdateNotify(List<GameQuest> quests) {
         super(PacketOpcodes.QuestListUpdateNotify);
         var proto = QuestListUpdateNotify.newBuilder();
-        for (GameQuest quest : quests) {
-            proto.addQuestList(quest.toProto());
-        }
+        // for (GameQuest quest : quests) {
+        //     proto.addQuestList(quest.toProto()); // field not in current proto
+        // }
         proto.build();
 
         this.setData(proto);

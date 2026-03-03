@@ -20,8 +20,8 @@ public class PacketDungeonPlayerDieNotify extends BasePacket {
                         .setDieType(playerDieType)
                         .setReviveCount(reviveCount)
                         .setWaitTime(waitTime)
-                        .setDungeonId(dungeonId)
-                        .setMurdererEntityId(killerId);
+                        .setDungeonId(dungeonId);
+                        // .setMurdererEntityId(killerId) // field not in current proto
 
         if (isGadget) proto.setGadgetId(killerId);
         else proto.setMonsterId(killerId);

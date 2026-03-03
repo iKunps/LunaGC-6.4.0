@@ -6,7 +6,7 @@ import lombok.Getter;
 @ResourceType(name = "DropMaterialExcelConfigData.json")
 @Getter
 public class DropMaterialData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private boolean useOnGain;

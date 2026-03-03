@@ -64,10 +64,9 @@ public class BattlePassMission {
                 .setMissionId(getId())
                 .setCurProgress(getProgress())
                 .setTotalProgress(getData().getProgress())
-                .setRewardBattlePassPoint(getData().getAddPoint())
+                // .setRewardBattlePassPoint(getData().getAddPoint()) // field not in current proto
                 .setMissionStatus(getStatus().getMissionStatus())
-                .setMissionType(
-                        getData().getRefreshType() == null ? 0 : getData().getRefreshType().getValue());
+                ; // .setMissionType(getData().getRefreshType() == null ? 0 : getData().getRefreshType().getValue()); // field not in current proto
 
         return protoBuilder.build();
     }

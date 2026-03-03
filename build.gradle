@@ -53,6 +53,7 @@ spotless {
 
 compileJava {
 	options.encoding = "UTF-8"
+	options.compilerArgs += ['-Xmaxerrs', '500']
 	options.fork = 'true'
 	options.forkOptions.with {
 		memoryMaximumSize = "3000m"

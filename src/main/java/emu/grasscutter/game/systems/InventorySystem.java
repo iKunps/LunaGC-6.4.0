@@ -12,7 +12,7 @@ import emu.grasscutter.game.player.Player;
 import emu.grasscutter.game.props.*;
 import emu.grasscutter.game.props.ItemUseAction.*;
 import emu.grasscutter.net.proto.ItemParamOuterClass.ItemParam;
-import emu.grasscutter.net.proto.MaterialInfoOuterClass.MaterialInfo;
+import emu.grasscutter.net.proto.MaterilaInfoOuterClass.MaterilaInfo;
 import emu.grasscutter.server.event.player.*;
 import emu.grasscutter.server.game.*;
 import emu.grasscutter.server.packet.send.*;
@@ -844,44 +844,29 @@ public class InventorySystem extends BaseGameSystem {
         avatar.unlockConstellation();
     }
 
-    public void destroyMaterial(Player player, List<MaterialInfo> list) {
-        // Return materials
+    /* destroyMaterial method commented out - MaterilaInfo type not compatible with MaterialInfo in current proto
+    public void destroyMaterial(Player player, List<MaterilaInfo> list) {
         val returnMaterialMap = new Int2IntOpenHashMap();
         val inventory = player.getInventory();
-
-        for (MaterialInfo info : list) {
-            // Sanity check
-            if (info.getCount() <= 0) {
-                continue;
-            }
-
+        for (MaterilaInfo info : list) {
+            if (info.getCount() <= 0) continue;
             GameItem item = inventory.getItemByGuid(info.getGuid());
-            if (item == null || !item.isDestroyable()) {
-                continue;
-            }
-
-            // Remove
+            if (item == null || !item.isDestroyable()) continue;
             int removeAmount = Math.min(info.getCount(), item.getCount());
             inventory.removeItem(item, removeAmount);
-
-            // Delete material return items
             val data = item.getItemData();
             if (data.getDestroyReturnMaterial().length > 0) {
                 for (int i = 0; i < data.getDestroyReturnMaterial().length; i++) {
-                    returnMaterialMap.addTo(
-                            data.getDestroyReturnMaterial()[i], data.getDestroyReturnMaterialCount()[i]);
+                    returnMaterialMap.addTo(data.getDestroyReturnMaterial()[i], data.getDestroyReturnMaterialCount()[i]);
                 }
             }
         }
-
-        // Give back items
         if (returnMaterialMap.size() > 0) {
             returnMaterialMap.forEach((id, count) -> inventory.addItem(new GameItem(id, count)));
         }
-
-        // Packets
         player.sendPacket(new PacketDestroyMaterialRsp(returnMaterialMap));
     }
+    */
 
     // Uses an item from the player's inventory.
     public synchronized GameItem useItem(

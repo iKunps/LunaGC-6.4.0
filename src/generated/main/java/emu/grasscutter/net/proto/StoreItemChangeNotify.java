@@ -373,7 +373,7 @@ public final class StoreItemChangeNotify {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.STORE_TYPE_NONE.getNumber()) {
+      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.StoreType_STORE_NONE.getNumber()) {
         output.writeEnum(1, storeType_);
       }
       if (reason_ != emu.grasscutter.net.proto.StoreItemChangeNotify.HAJPFNNMIPD.DGFFPOLCMCP.DGFFPOLCMCP_OTHERS.getNumber()) {
@@ -391,7 +391,7 @@ public final class StoreItemChangeNotify {
       if (size != -1) return size;
 
       size = 0;
-      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.STORE_TYPE_NONE.getNumber()) {
+      if (storeType_ != emu.grasscutter.net.proto.StoreTypeOuterClass.StoreType.StoreType_STORE_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, storeType_);
       }

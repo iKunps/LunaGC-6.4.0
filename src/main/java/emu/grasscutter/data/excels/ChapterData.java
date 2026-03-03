@@ -10,7 +10,7 @@ public class ChapterData extends GameResource {
     @Getter private static final Map<Integer, ChapterData> beginQuestChapterMap = new HashMap<>();
     @Getter private static final Map<Integer, ChapterData> endQuestChapterMap = new HashMap<>();
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int beginQuestId;
