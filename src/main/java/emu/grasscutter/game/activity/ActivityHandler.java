@@ -120,12 +120,13 @@ public abstract class ActivityHandler {
         var proto = ActivityInfoOuterClass.ActivityInfo.newBuilder();
         proto
                 .setActivityId(activityConfigItem.getActivityId())
-                .setActivityType(activityConfigItem.getActivityType())
+                // .setActivityType(activityConfigItem.getActivityType()) // field not in current proto
                 .setScheduleId(activityConfigItem.getScheduleId())
                 .setBeginTime(DateHelper.getUnixTime(activityConfigItem.getBeginTime()))
-                .setFirstDayStartTime(DateHelper.getUnixTime(activityConfigItem.getBeginTime()))
+                // .setFirstDayStartTime(DateHelper.getUnixTime(activityConfigItem.getBeginTime())) // field not in current proto
                 .setEndTime(DateHelper.getUnixTime(activityConfigItem.getEndTime()))
-                .addAllMeetCondList(getMeetConditions(conditionExecutor));
+                // .addAllMeetCondList(getMeetConditions(conditionExecutor)) // field not in current proto
+                ;
 
         if (playerActivityData != null) {
             proto.addAllWatcherInfoList(playerActivityData.getAllWatcherInfoList());

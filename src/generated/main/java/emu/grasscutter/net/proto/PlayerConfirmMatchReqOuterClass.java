@@ -176,7 +176,7 @@ public final class PlayerConfirmMatchReqOuterClass {
       if (isAgreed_ != false) {
         output.writeBool(12, isAgreed_);
       }
-      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MATCH_TYPE_NONE.getNumber()) {
+      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MatchType_NONE.getNumber()) {
         output.writeEnum(15, matchType_);
       }
       unknownFields.writeTo(output);
@@ -192,7 +192,7 @@ public final class PlayerConfirmMatchReqOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(12, isAgreed_);
       }
-      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MATCH_TYPE_NONE.getNumber()) {
+      if (matchType_ != emu.grasscutter.net.proto.MatchTypeOuterClass.MatchType.MatchType_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(15, matchType_);
       }

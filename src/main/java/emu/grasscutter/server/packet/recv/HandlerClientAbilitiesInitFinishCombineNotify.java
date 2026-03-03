@@ -5,6 +5,7 @@ import emu.grasscutter.net.packet.*;
 import emu.grasscutter.net.proto.AbilityInvokeEntryOuterClass.AbilityInvokeEntry;
 import emu.grasscutter.net.proto.ClientAbilitiesInitFinishCombineNotifyOuterClass.ClientAbilitiesInitFinishCombineNotify;
 import emu.grasscutter.net.proto.EntityAbilityInvokeEntryOuterClass.EntityAbilityInvokeEntry;
+import emu.grasscutter.net.proto.ForwardTypeOuterClass.ForwardType;
 import emu.grasscutter.server.game.GameSession;
 
 @Opcodes(PacketOpcodes.ClientAbilitiesInitFinishCombineNotify)
@@ -23,7 +24,7 @@ public class HandlerClientAbilitiesInitFinishCombineNotify extends PacketHandler
         for (EntityAbilityInvokeEntry entry : notif.getEntityInvokeListList()) {
             for (AbilityInvokeEntry ability : entry.getInvokesList()) {
                 player.getAbilityManager().onAbilityInvoke(ability);
-                player.getClientAbilityInitFinishHandler().addEntry(ability.getForwardType(), ability);
+                player.getClientAbilityInitFinishHandler().addEntry(ForwardType.FORWARD_TYPE_TO_ALL, ability); // ability.getForwardType() - field not in current proto
             }
 
             if (entry.getInvokesList().size() > 0) {

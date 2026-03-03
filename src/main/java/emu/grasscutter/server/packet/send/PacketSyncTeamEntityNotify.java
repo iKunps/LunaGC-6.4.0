@@ -21,7 +21,7 @@ public class PacketSyncTeamEntityNotify extends BasePacket {
                         .build())
                 .setFloatValue(player.getPhlogistonValue())
 
-                .setValueType(AbilityScalarTypeOuterClass.AbilityScalarType.ABILITY_SCALAR_TYPE_FLOAT)
+                // .setValueType(AbilityScalarTypeOuterClass.AbilityScalarType.ABILITY_SCALAR_TYPE_FLOAT) // field not in current proto
                 .build();
         AbilitySyncStateInfo phlogiston = AbilitySyncStateInfo.newBuilder().addSgvDynamicValueMap(scalarValue).build();
 

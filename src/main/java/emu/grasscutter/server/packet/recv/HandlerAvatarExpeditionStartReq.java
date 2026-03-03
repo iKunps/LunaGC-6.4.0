@@ -13,9 +13,12 @@ public class HandlerAvatarExpeditionStartReq extends PacketHandler {
         AvatarExpeditionStartReq req = AvatarExpeditionStartReq.parseFrom(payload);
         var player = session.getPlayer();
 
-        int startTime = Utils.getCurrentSeconds();
-        player.addExpeditionInfo(req.getAvatarGuid(), req.getExpId(), req.getHourTime(), startTime);
-        player.save();
+        // Proto structure changed: getAvatarGuid(), getExpId(), getHourTime() no longer exist.
+        // The proto now uses getBasicInfoListList() which returns a list of AvatarExpeditionBasicInfo.
+        // TODO: Reimplement using req.getBasicInfoListList()
+        // int startTime = Utils.getCurrentSeconds();
+        // player.addExpeditionInfo(req.getAvatarGuid(), req.getExpId(), req.getHourTime(), startTime);
+        // player.save();
         session.send(new PacketAvatarExpeditionStartRsp(player.getExpeditionInfo()));
     }
 }

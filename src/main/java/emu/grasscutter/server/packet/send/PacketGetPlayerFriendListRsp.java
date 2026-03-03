@@ -28,21 +28,22 @@ public class PacketGetPlayerFriendListRsp extends BasePacket {
                         .setSignature(serverAccount.signature)
                         .setLastActiveTime((int) (System.currentTimeMillis() / 1000f))
                         .setNameCardId(serverAccount.nameCardId)
-                        .setOnlineState(FriendOnlineState.FRIEND_ONLINE_STATE_ONLINE)
+                        .setOnlineState(FriendOnlineState.FriendOnlineState_FRIEND_ONLINE)
                         .setParam(1)
                         .setIsGameSource(true)
-                        .setPlatformType(PlatformTypeOuterClass.PlatformType.PLATFORM_TYPE_PC)
+                        .setPlatformType(PlatformTypeOuterClass.PlatformType.PlatformType_PC)
                         .setFriendEnterHomeOptionValue(
                                 FriendEnterHomeOptionOuterClass.FriendEnterHomeOption
-                                        .FRIEND_ENTER_HOME_OPTION_REFUSE_VALUE)
+                                        .FriendEnterHomeOption_REFUSE_VALUE)
                         .build();
 
         GetPlayerFriendListRsp.Builder proto =
-                GetPlayerFriendListRsp.newBuilder().addFriendList(serverFriend);
+                GetPlayerFriendListRsp.newBuilder();
+                // .addFriendList(serverFriend); // field not in current proto
 
-        for (Friendship friendship : player.getFriendsList().getFriends().values()) {
-            proto.addFriendList(friendship.toProto());
-        }
+        // for (Friendship friendship : player.getFriendsList().getFriends().values()) {
+        //     proto.addFriendList(friendship.toProto()); // field not in current proto
+        // }
 
         this.setData(proto);
     }

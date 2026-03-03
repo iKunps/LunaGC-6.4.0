@@ -32,8 +32,8 @@ public class PacketGetDailyDungeonEntryInfoRsp extends BasePacket {
 
         var builder = DailyDungeonEntryInfoOuterClass.DailyDungeonEntryInfo.newBuilder();
 
-        builder.setDungeonEntryId(dungeonEntryId);
-        builder.setDungeonEntryConfigId(id);
+        // builder.setDungeonEntryId(dungeonEntryId); // field not in current proto
+        // builder.setDungeonEntryConfigId(id); // field not in current proto
         builder.setRecommendDungeonEntryInfo(dungeonEntryInfo);
         return builder.build();
     }

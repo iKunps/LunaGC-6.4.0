@@ -12,7 +12,9 @@ public class PacketBuyGoodsRsp extends BasePacket {
                         .setShopType(shopType)
                         .setBuyCount(boughtNum)
                         .addGoodsList(
-                                ShopGoodsOuterClass.ShopGoods.newBuilder().mergeFrom(sg).setBoughtNum(boughtNum))
+                                ShopGoodsOuterClass.ShopGoods.newBuilder().mergeFrom(sg)
+                                // .setBoughtNum(boughtNum) // field not in current proto
+                        )
                         .build();
 
         this.setData(buyGoodsRsp);

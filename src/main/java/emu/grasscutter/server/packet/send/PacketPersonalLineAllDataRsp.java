@@ -22,9 +22,9 @@ public class PacketPersonalLineAllDataRsp extends BasePacket {
                         .map(GameQuest::getSubQuestId)
                         .collect(Collectors.toSet());
 
-        GameData.getPersonalLineDataMap().values().stream()
-                .filter(i -> !questList.contains(i.getStartQuestId()))
-                .forEach(i -> proto.addCanBeUnlockedPersonalLineList(i.getId()));
+        // GameData.getPersonalLineDataMap().values().stream()
+        //         .filter(i -> !questList.contains(i.getStartQuestId()))
+        //         .forEach(i -> proto.addCanBeUnlockedPersonalLineList(i.getId())); // field not in current proto
 
         this.setData(proto);
     }

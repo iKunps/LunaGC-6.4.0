@@ -113,20 +113,21 @@ public class WorldDataSystem extends BaseGameSystem {
         builder
                 .setId(imd.getId())
                 .setCityId(imd.getCityId())
-                .setSceneId(imd.getCityData().getSceneId())
-                .setGroupId(groupId)
-                .setMonsterId(monsterId)
-                .setLevel(getMonsterLevel(monster.get(), player.getWorld()))
-                .setIsAlive(true)
-                .setNextRefreshTime(Integer.MAX_VALUE)
-                .setRefreshInterval(Integer.MAX_VALUE)
-                .setPos(monster.get().pos.toProto());
+                // .setSceneId(imd.getCityData().getSceneId()) // field not in current proto
+                // .setGroupId(groupId) // field not in current proto
+                // .setMonsterId(monsterId) // field not in current proto
+                // .setLevel(getMonsterLevel(monster.get(), player.getWorld())) // field not in current proto
+                // .setIsAlive(true) // field not in current proto
+                // .setNextRefreshTime(Integer.MAX_VALUE) // field not in current proto
+                // .setRefreshInterval(Integer.MAX_VALUE) // field not in current proto
+                // .setPos(monster.get().pos.toProto()) // field not in current proto
+                ;
 
         if ("Boss".equals(imd.getMonsterCategory())) {
             var bossChest = group.searchBossChestInGroup();
             if (bossChest.isPresent()) {
-                builder.setResin(bossChest.get().resin);
-                builder.setMaxBossChestNum(bossChest.get().take_num);
+                // builder.setResin(bossChest.get().resin); // field not in current proto
+                // builder.setMaxBossChestNum(bossChest.get().take_num); // field not in current proto
             }
         }
         return builder.build();

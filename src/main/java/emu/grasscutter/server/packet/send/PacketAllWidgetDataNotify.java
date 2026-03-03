@@ -20,13 +20,13 @@ public class PacketAllWidgetDataNotify extends BasePacket {
                         // Maybe it's a little difficult, or it makes you upset :(
                         .addAllOneoffGatherPointDetectorDataList(List.of())
                         // So, goodbye, and hopefully sometime in the future o(*￣▽￣*)ブ
-                        .addAllCoolDownGroupDataList(List.of())
+                        // .addAllCoolDownGroupDataList(List.of()) // field not in current proto
                         // I'll see your PR with a title that says (・∀・(・∀・(・∀・*)
                         .addAllAnchorPointList(List.of())
                         // "Complete implementation of widget functionality" b（￣▽￣）d
-                        .addAllClientCollectorDataList(List.of())
+                        .addAllClientCollectorDataList(List.of());
                         // Good luck, my boy.
-                        .addAllNormalCoolDownDataList(List.of());
+                        // .addAllNormalCoolDownDataList(List.of()) // field not in current proto
 
         if (player.getWidgetId()
                 == 0) { // TODO: check this logic later, it was null-checking an int before which made it
@@ -41,7 +41,7 @@ public class PacketAllWidgetDataNotify extends BasePacket {
 
             proto.addSlotList(
                     WidgetSlotDataOuterClass.WidgetSlotData.newBuilder()
-                            .setTag(WidgetSlotTagOuterClass.WidgetSlotTag.WIDGET_SLOT_TAG_ATTACH_AVATAR)
+                            // .setTag(WidgetSlotTagOuterClass.WidgetSlotTag.WidgetSlotTag_WIDGET_SLOT_ATTACH_AVATAR) // field not in current proto
                             .build());
         }
 

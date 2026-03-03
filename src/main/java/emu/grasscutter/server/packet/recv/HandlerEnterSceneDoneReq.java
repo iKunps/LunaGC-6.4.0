@@ -42,7 +42,7 @@ public class HandlerEnterSceneDoneReq extends PacketHandler {
         var avatarEntity = player.getTeamManager().getCurrentAvatarEntity();
         float currentHpDebts = avatarEntity.getFightProperty(FightProperty.FIGHT_PROP_CUR_HP_DEBTS);
         if (currentHpDebts > 0.0f) {
-            avatarEntity.getWorld().broadcastPacket(new PacketEntityFightPropChangeReasonNotify(avatarEntity, FightProperty.FIGHT_PROP_CUR_HP_DEBTS, currentHpDebts, PropChangeReasonOuterClass.PropChangeReason.PROP_CHANGE_REASON_NONE, ChangeHpDebtsReasonOuterClass.ChangeHpDebtsReason.CHANGE_HP_DEBTS_NONE));
+            avatarEntity.getWorld().broadcastPacket(new PacketEntityFightPropChangeReasonNotify(avatarEntity, FightProperty.FIGHT_PROP_CUR_HP_DEBTS, currentHpDebts, PropChangeReasonOuterClass.PropChangeReason.PropChangeReason_PROP_CHANGE_NONE, ChangeHpDebtsReasonOuterClass.ChangeHpDebtsReason.CHANGE_HP_DEBTS_NONE));
         }
         // spawn NPC
         player.getScene().loadNpcForPlayerEnter(player);

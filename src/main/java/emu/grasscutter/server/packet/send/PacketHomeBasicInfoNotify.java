@@ -21,10 +21,10 @@ public class PacketHomeBasicInfoNotify extends BasePacket {
 
         proto.setBasicInfo(
                 HomeBasicInfoOuterClass.HomeBasicInfo.newBuilder()
-                        .setCurModuleId(owner.getCurrentRealmId())
-                        .setCurRoomSceneId(homeScene.getRoomSceneId())
+                        // .setCurModuleId(owner.getCurrentRealmId()) // field not in current proto
+                        // .setCurRoomSceneId(homeScene.getRoomSceneId()) // field not in current proto
                         .setIsInEditMode(editMode)
-                        .setHomeOwnerUid(owner.getUid())
+                        // .setHomeOwnerUid(owner.getUid()) // field not in current proto
                         .setExp(home.getExp())
                         .setLevel(home.getLevel())
                         .setOwnerNickName(owner.getNickname())

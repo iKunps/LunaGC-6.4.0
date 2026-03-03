@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ActivityWatcherData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     int id;
 
     int rewardID;

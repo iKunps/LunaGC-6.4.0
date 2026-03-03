@@ -40,7 +40,7 @@ public final class ActionGetHPPaidDebts extends AbilityActionHandler {
             
             // Broadcast the updated paid debt value to the world
             target.getWorld().broadcastPacket(new PacketEntityFightPropUpdateNotify(target, FightProperty.FIGHT_PROP_CUR_HP_PAID_DEBTS));
-            target.getWorld().broadcastPacket(new PacketEntityFightPropChangeReasonNotify(target, FightProperty.FIGHT_PROP_CUR_HP_PAID_DEBTS, paiddebt, PropChangeReasonOuterClass.PropChangeReason.PROP_CHANGE_REASON_ABILITY, ChangeHpDebtsReasonOuterClass.ChangeHpDebtsReason.CHANGE_HP_DEBTS_PAY));
+            target.getWorld().broadcastPacket(new PacketEntityFightPropChangeReasonNotify(target, FightProperty.FIGHT_PROP_CUR_HP_PAID_DEBTS, paiddebt, PropChangeReasonOuterClass.PropChangeReason.PropChangeReason_PROP_CHANGE_ABILITY, ChangeHpDebtsReasonOuterClass.ChangeHpDebtsReason.CHANGE_HP_DEBTS_PAY));
         } else {
             Grasscutter.getLogger().warn("[ActionGetHPPaidDebts] CANNOT PAY HPDEBT FOR NON AVATAR ENTITY");
             return false;

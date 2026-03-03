@@ -48,14 +48,16 @@ public class HomeBlockItem {
         this.blockId = homeBlockArrangementInfo.getBlockId();
 
         this.deployFurnitureList =
-                homeBlockArrangementInfo.getDeployFurniureListList().stream()
-                        .map(HomeFurnitureItem::parseFrom)
-                        .toList();
+                // homeBlockArrangementInfo.getDeployFurniureListList().stream() // field not in current proto
+                //         .map(HomeFurnitureItem::parseFrom)
+                //         .toList();
+                List.of();
 
         this.persistentFurnitureList =
-                homeBlockArrangementInfo.getPersistentFurnitureListList().stream()
-                        .map(HomeFurnitureItem::parseFrom)
-                        .toList();
+                // homeBlockArrangementInfo.getPersistentFurnitureListList().stream() // field not in current proto
+                //         .map(HomeFurnitureItem::parseFrom)
+                //         .toList();
+                List.of();
 
         this.deployAnimalList =
                 homeBlockArrangementInfo.getDeployAnimalListList().stream()
@@ -63,9 +65,10 @@ public class HomeBlockItem {
                         .toList();
 
         this.deployNPCList =
-                homeBlockArrangementInfo.getDeployNpcListList().stream()
-                        .map(homeNpcData -> HomeNPCItem.parseFrom(homeNpcData, owner))
-                        .toList();
+                // homeBlockArrangementInfo.getDeployNpcListList().stream() // field not in current proto
+                //         .map(homeNpcData -> HomeNPCItem.parseFrom(homeNpcData, owner))
+                //         .toList();
+                List.of();
 
         this.suiteList =
                 homeBlockArrangementInfo.getFurnitureSuiteListList().stream()
@@ -86,10 +89,10 @@ public class HomeBlockItem {
 
         this.reassignIfNull();
 
-        this.deployFurnitureList.forEach(f -> proto.addDeployFurniureList(f.toProto()));
-        this.persistentFurnitureList.forEach(f -> proto.addPersistentFurnitureList(f.toProto()));
+        // this.deployFurnitureList.forEach(f -> proto.addDeployFurniureList(f.toProto())); // field not in current proto
+        // this.persistentFurnitureList.forEach(f -> proto.addPersistentFurnitureList(f.toProto())); // field not in current proto
         this.deployAnimalList.forEach(f -> proto.addDeployAnimalList(f.toProto()));
-        this.deployNPCList.forEach(f -> proto.addDeployNpcList(f.toProto()));
+        // this.deployNPCList.forEach(f -> proto.addDeployNpcList(f.toProto())); // field not in current proto
         this.suiteList.forEach(f -> proto.addFurnitureSuiteList(f.toProto()));
 
         return proto.build();

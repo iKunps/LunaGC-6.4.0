@@ -26,7 +26,7 @@ public class MonsterData extends GameResource {
                     FightProperty.FIGHT_PROP_ROCK_SUB_HURT,
                     FightProperty.FIGHT_PROP_ICE_SUB_HURT);
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private String monsterName;

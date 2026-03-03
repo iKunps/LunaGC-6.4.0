@@ -17,13 +17,13 @@ import lombok.*;
 public class EntityWeapon extends EntityBaseGadget {
     @Getter private final GadgetData gadgetData;
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     @Setter
     private int gadgetId;
 
     @Nullable @Getter private ConfigEntityGadget configGadget;
 
-    @Getter(onMethod_ = @Override, lazy = true)
+    @Getter(lazy = true)
     private final Int2FloatMap fightProperties = new Int2FloatOpenHashMap();
 
     @Getter private final Position bornPos;

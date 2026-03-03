@@ -8,7 +8,7 @@ import lombok.Getter;
 
 @ResourceType(name = "ReliquaryLevelExcelConfigData.json")
 public class ReliquaryLevelData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private Int2FloatMap propMap;

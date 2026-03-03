@@ -17,9 +17,9 @@ public class PacketTakeFurnitureMakeRsp extends BasePacket {
 
         proto.setRetcode(ret).setMakeId(makeId);
 
-        if (output != null) {
-            proto.addAllOutputItemList(output);
-        }
+        // if (output != null) {
+        //     proto.addAllOutputItemList(output); // field not in current proto
+        // }
 
         if (others != null) {
             proto.setFurnitureMakeSlot(

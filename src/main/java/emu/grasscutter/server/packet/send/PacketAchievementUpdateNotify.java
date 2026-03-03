@@ -11,7 +11,7 @@ public class PacketAchievementUpdateNotify extends BasePacket {
 
         var notify =
                 AchievementUpdateNotifyOuterClass.AchievementUpdateNotify.newBuilder()
-                        .addAllAchievementList(achievements.stream().map(Achievement::toProto).toList())
+                        // .addAllAchievementList(achievements.stream().map(Achievement::toProto).toList()) // field not in current proto
                         .build();
 
         this.setData(notify);

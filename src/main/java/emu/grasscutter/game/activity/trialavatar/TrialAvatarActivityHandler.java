@@ -9,7 +9,7 @@ import emu.grasscutter.game.dungeons.DungeonTrialTeam;
 import emu.grasscutter.game.player.Player;
 import emu.grasscutter.game.props.*;
 import emu.grasscutter.net.proto.ActivityInfoOuterClass.ActivityInfo;
-import emu.grasscutter.net.proto.TrialAvatarGrantRecordOuterClass.TrialAvatarGrantRecord.GrantReason;
+// GrantReason enum removed from proto; using int constants instead
 import emu.grasscutter.server.packet.send.*;
 import emu.grasscutter.utils.JsonUtils;
 import java.util.*;
@@ -102,7 +102,7 @@ public class TrialAvatarActivityHandler extends ActivityHandler {
         if (battleAvatarsList.isEmpty()) return null;
 
         return new DungeonTrialTeam(
-                battleAvatarsList, GrantReason.GRANT_REASON_BY_TRIAL_AVATAR_ACTIVITY);
+                battleAvatarsList, 2 /* GRANT_REASON_BY_TRIAL_AVATAR_ACTIVITY */);
     }
 
     public void unsetTrialAvatarTeam(Player player) {

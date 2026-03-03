@@ -9,7 +9,9 @@ public class PacketCombineDataNotify extends BasePacket {
         super(PacketOpcodes.CombineDataNotify);
 
         CombineDataNotify proto =
-                CombineDataNotify.newBuilder().addAllCombineIdList(unlockedCombines).build();
+                CombineDataNotify.newBuilder()
+                        // .addAllCombineIdList(unlockedCombines) // field not in current proto
+                        .build();
 
         this.setData(proto);
     }

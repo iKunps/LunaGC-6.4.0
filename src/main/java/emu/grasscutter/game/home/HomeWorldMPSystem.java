@@ -27,7 +27,7 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                             "",
                             false,
                             PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason
-                                    .OPEN_STATE_NOT_OPEN));
+                                    .Reason_OPEN_STATE_NOT_OPEN));
             requester.sendPacket(new PacketTryEnterHomeRsp());
             return;
         }
@@ -39,7 +39,7 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                             "",
                             false,
                             PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason
-                                    .OPEN_STATE_NOT_OPEN));
+                                    .Reason_OPEN_STATE_NOT_OPEN));
             requester.sendPacket(new PacketTryEnterHomeRsp());
             return;
         }
@@ -57,7 +57,7 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                             owner.getNickname(),
                             false,
                             PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason
-                                    .HOST_IN_EDIT_MODE));
+                                    .Reason_HOST_IN_EDIT_MODE));
             requester.sendPacket(new PacketTryEnterHomeRsp());
             return;
         }
@@ -84,7 +84,7 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                             owner.getNickname(),
                             false,
                             PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason
-                                    .SYSTEM_JUDGE));
+                                    .Reason_SYSTEM_JUDGE));
             requester.sendPacket(new PacketTryEnterHomeRsp());
             return;
         }
@@ -95,7 +95,7 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                         owner.getNickname(),
                         isAgreed,
                         PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason
-                                .PLAYER_JUDGE));
+                                .Reason_PLAYER_JUDGE));
 
         if (!isAgreed) {
             requester.sendPacket(new PacketTryEnterHomeRsp());
@@ -211,7 +211,7 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                 .sendPacketToHostIfOnline(
                         new PacketOtherPlayerEnterOrLeaveHomeNotify(
                                 player,
-                                OtherPlayerEnterHomeNotifyOuterClass.OtherPlayerEnterHomeNotify.Reason.LEAVE));
+                                OtherPlayerEnterHomeNotifyOuterClass.OtherPlayerEnterHomeNotify.Reason.Reason_LEAVE));
         var myHome = this.server.getHomeWorldOrCreate(player);
         player.setCurHomeWorld(myHome);
         myHome.getHome().onOwnerLogin(player);
@@ -219,11 +219,11 @@ public class HomeWorldMPSystem extends BaseGameSystem {
         player.sendPacket(
                 new PacketPlayerQuitFromHomeNotify(
                         PlayerQuitFromHomeNotifyOuterClass.PlayerQuitFromHomeNotify.QuitReason
-                                .BACK_TO_MY_WORLD));
+                                .QuitReason_BACK_TO_MY_WORLD));
         player.sendPacket(
                 new PacketPlayerEnterSceneNotify(
                         player,
-                        EnterTypeOuterClass.EnterType.ENTER_TYPE_BACK,
+                        EnterTypeOuterClass.EnterType.EnterType_ENTER_BACK,
                         EnterReason.TeamBack,
                         prevScene,
                         pos));
@@ -263,18 +263,18 @@ public class HomeWorldMPSystem extends BaseGameSystem {
                 .sendPacketToHostIfOnline(
                         new PacketOtherPlayerEnterOrLeaveHomeNotify(
                                 victim,
-                                OtherPlayerEnterHomeNotifyOuterClass.OtherPlayerEnterHomeNotify.Reason.LEAVE));
+                                OtherPlayerEnterHomeNotifyOuterClass.OtherPlayerEnterHomeNotify.Reason.Reason_LEAVE));
         var myHome = this.server.getHomeWorldOrCreate(victim);
         victim.setCurHomeWorld(myHome);
         myHome.getHome().onOwnerLogin(victim);
 
         victim.sendPacket(
                 new PacketPlayerQuitFromHomeNotify(
-                        PlayerQuitFromHomeNotifyOuterClass.PlayerQuitFromHomeNotify.QuitReason.KICK_BY_HOST));
+                        PlayerQuitFromHomeNotifyOuterClass.PlayerQuitFromHomeNotify.QuitReason.QuitReason_KICK_BY_HOST));
         victim.sendPacket(
                 new PacketPlayerEnterSceneNotify(
                         victim,
-                        EnterTypeOuterClass.EnterType.ENTER_TYPE_BACK,
+                        EnterTypeOuterClass.EnterType.EnterType_ENTER_BACK,
                         EnterReason.TeamKick,
                         victim.getScene().getId(),
                         victim.getPrevPosForHome()));

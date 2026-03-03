@@ -38,14 +38,14 @@ public class PacketCombineRsp extends BasePacket {
         CombineRspOuterClass.CombineRsp proto =
                 CombineRspOuterClass.CombineRsp.newBuilder()
                         .setRetcode(RetcodeOuterClass.Retcode.RET_SUCC_VALUE)
-                        .setCombineId(combineReq.getCombineId())
-                        .setCombineCount(combineReq.getCombineCount())
+                        // .setCombineId(combineReq.getCombineId()) // field not in current proto
+                        // .setCombineCount(combineReq.getCombineCount()) // field not in current proto
                         .setAvatarGuid(combineReq.getAvatarGuid())
                         .addAllCostItemList(costItemList)
-                        .addAllResultItemList(resultItemList)
-                        .addAllTotalRandomItemList(totalRandomItemList)
-                        .addAllTotalReturnItemList(totalReturnItemList)
-                        .addAllTotalExtraItemList(totalExtraItemList)
+                        // .addAllResultItemList(resultItemList) // field not in current proto
+                        // .addAllTotalRandomItemList(totalRandomItemList) // field not in current proto
+                        // .addAllTotalReturnItemList(totalReturnItemList) // field not in current proto
+                        // .addAllTotalExtraItemList(totalExtraItemList) // field not in current proto
                         .build();
 
         this.setData(proto);

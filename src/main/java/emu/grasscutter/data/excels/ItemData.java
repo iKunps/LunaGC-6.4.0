@@ -21,7 +21,7 @@ import lombok.Getter;
 @Getter
 public class ItemData extends GameResource {
     // Main
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int stackLimit = 1;

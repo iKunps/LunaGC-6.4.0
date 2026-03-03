@@ -10,7 +10,7 @@ import lombok.Getter;
 @ResourceType(name = {"BattlePassMissionExcelConfigData.json"})
 @Getter
 public class BattlePassMissionData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int addPoint;
@@ -58,9 +58,9 @@ public class BattlePassMissionData extends GameResource {
         protoBuilder
                 .setMissionId(getId())
                 .setTotalProgress(this.getProgress())
-                .setRewardBattlePassPoint(this.getAddPoint())
-                .setMissionStatus(MissionStatus.MISSION_STATUS_UNFINISHED)
-                .setMissionType(this.getRefreshType() == null ? 0 : this.getRefreshType().getValue());
+                // .setRewardBattlePassPoint(this.getAddPoint()) // field not in current proto
+                // .setMissionStatus(MissionStatus.MISSION_UNFINISHED) // field not in current proto
+                ; // .setMissionType(this.getRefreshType() == null ? 0 : this.getRefreshType().getValue()); // field not in current proto
 
         return protoBuilder.build();
     }

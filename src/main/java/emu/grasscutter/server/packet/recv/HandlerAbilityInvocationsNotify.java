@@ -4,6 +4,7 @@ import emu.grasscutter.game.player.Player;
 import emu.grasscutter.net.packet.*;
 import emu.grasscutter.net.proto.AbilityInvocationsNotifyOuterClass.AbilityInvocationsNotify;
 import emu.grasscutter.net.proto.AbilityInvokeEntryOuterClass.AbilityInvokeEntry;
+import emu.grasscutter.net.proto.ForwardTypeOuterClass.ForwardType;
 import emu.grasscutter.server.game.GameSession;
 
 @Opcodes(PacketOpcodes.AbilityInvocationsNotify)
@@ -16,7 +17,7 @@ public class HandlerAbilityInvocationsNotify extends PacketHandler {
         Player player = session.getPlayer();
         for (AbilityInvokeEntry entry : notif.getInvokesList()) {
             player.getAbilityManager().onAbilityInvoke(entry);
-            player.getAbilityInvokeHandler().addEntry(entry.getForwardType(), entry);
+            player.getAbilityInvokeHandler().addEntry(ForwardType.FORWARD_TYPE_TO_ALL, entry); // entry.getForwardType() - field not in current proto
         }
     }
 }

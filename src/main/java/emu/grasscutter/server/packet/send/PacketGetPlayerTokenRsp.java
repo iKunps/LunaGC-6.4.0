@@ -23,7 +23,7 @@ public class PacketGetPlayerTokenRsp extends BasePacket {
                 //    session.getPlayer().getAvatars().getAvatarCount() > 0) // Not sure where this goes
                 .setPlatformType(3)
                 //.setChannelId(1)
-                .setCountryCode("US")
+                // .setCountryCode("US") // field not in current proto
                 //.setRegPlatform(3)
                 .setKeyId(keyId)
                 //.setTag(5)
@@ -47,7 +47,7 @@ public class PacketGetPlayerTokenRsp extends BasePacket {
                 //.setMsg(msg)
                 //.setBlackUidEndTime(blackEndTime)
                 //.setRegPlatform(3)
-                .setCountryCode("US")
+                // .setCountryCode("US") // field not in current proto
                 //.setTag(5)
                 .build();
 
@@ -68,14 +68,14 @@ public class PacketGetPlayerTokenRsp extends BasePacket {
                 //.setIsProficientPlayer(
                 //    session.getPlayer().getAvatars().getAvatarCount() > 0) // Not sure where this goes
                 //.setSecretKeySeed(session.getEncryptSeed())
-                .setSecurityCmdBuffer(ByteString.copyFrom(Crypto.ENCRYPT_SEED_BUFFER))
+                // .setSecurityCmdBuffer(ByteString.copyFrom(Crypto.ENCRYPT_SEED_BUFFER)) // field not in current proto
                 .setKeyId(keyId)
                 .setPlatformType(3)
                 //.setChannelId(1)
-                .setCountryCode("US")
-                .setClientVersionRandomKey("c25-314dd05b0b5f")
+                // .setCountryCode("US") // field not in current proto
+                // .setClientVersionRandomKey("c25-314dd05b0b5f") // field not in current proto
                 //.setRegPlatform(3)
-                .setClientIpStr(session.getAddress().getAddress().getHostAddress())
+                // .setClientIpStr(session.getAddress().getAddress().getHostAddress()) // field not in current proto
                 .setServerRandKey(encryptedSeed)
                 .setSign(encryptedSeedSign)
                 .build();

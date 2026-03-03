@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Setter // TODO: remove setters next API break
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CoopPointData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     int id;
 
     int chapterId;

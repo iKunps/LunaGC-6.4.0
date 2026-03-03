@@ -27,8 +27,8 @@ public class PacketServerAnnounceNotify extends BasePacket {
                         .setConfigId(configId)
                         .setBeginTime(Utils.getCurrentSeconds() + 1)
                         .setEndTime(Utils.getCurrentSeconds() + 2)
-                        .setCenterSystemText(msg)
-                        .setCenterSystemFrequency(1)
+                        // .setCenterSystemText(msg) // field not in current proto
+                        // .setCenterSystemFrequency(1) // field not in current proto
                         .build());
 
         this.setData(proto);

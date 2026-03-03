@@ -28,8 +28,8 @@ public class PacketHomeResourceNotify extends BasePacket {
 
         var notify =
                 HomeResourceNotifyOuterClass.HomeResourceNotify.newBuilder()
-                        .setFetterExp(fetter)
-                        .setHomeCoin(coin)
+                        // .setFetterExp(fetter) // field not in current proto
+                        // .setHomeCoin(coin) // field not in current proto
                         .build();
 
         this.setData(notify);

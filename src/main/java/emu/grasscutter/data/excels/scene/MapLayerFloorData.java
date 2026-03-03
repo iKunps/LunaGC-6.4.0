@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class MapLayerFloorData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     int id;
 
     int IHIJBINKPAI;

@@ -17,10 +17,10 @@ public class PacketTowerLevelStarCondNotify extends BasePacket {
                             // If these are still obfuscated in the next client version,
                             // just set all int fields to the star (1 <= star <= 3)
                             // that failed and set all boolean fields to true.
-                            .setCondValue(lostStar)
+                            // .setCondValue(lostStar) // field not in current proto
                             .setIsFail(true)
                             .setIsPause(true)
-                            .setStarCondIndex(lostStar)
+                            // .setStarCondIndex(lostStar) // field not in current proto
                             .build());
         } else {
             proto

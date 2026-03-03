@@ -11,7 +11,7 @@ import lombok.Getter;
         loadPriority = LoadPriority.HIGHEST)
 @Getter
 public class ForgeData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private int playerLevel;

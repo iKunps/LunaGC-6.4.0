@@ -24,9 +24,11 @@ public class PacketPlayerCookRsp extends BasePacket {
         PlayerCookRsp.Builder proto =
                 PlayerCookRsp.newBuilder()
                         .setRecipeData(
-                                CookRecipeData.newBuilder().setRecipeId(recipeId).setProficiency(proficiency))
-                        .setQteQuality(quality)
-                        .setCookCount(count);
+                                CookRecipeData.newBuilder().setRecipeId(recipeId)
+                                // .setProficiency(proficiency) // field not in current proto
+                        );
+                        // .setQteQuality(quality) // field not in current proto
+                        // .setCookCount(count) // field not in current proto
 
         for (var item : output) {
             proto.addItemList(

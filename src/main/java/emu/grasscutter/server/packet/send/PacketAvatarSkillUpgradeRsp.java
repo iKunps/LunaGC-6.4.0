@@ -12,9 +12,9 @@ public class PacketAvatarSkillUpgradeRsp extends BasePacket {
         AvatarSkillUpgradeRsp proto =
                 AvatarSkillUpgradeRsp.newBuilder()
                         .setAvatarGuid(avatar.getGuid())
-                        .setAvatarSkillId(skillId)
-                        .setOldLevel(oldLevel)
-                        .setCurLevel(newLevel)
+                        // .setAvatarSkillId(skillId) // field not in current proto
+                        // .setOldLevel(oldLevel) // field not in current proto
+                        // .setCurLevel(newLevel) // field not in current proto
                         .build();
 
         this.setData(proto);

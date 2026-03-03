@@ -49,15 +49,15 @@ public final class GadgetWorktop extends GadgetContent {
         var options = this.getWorktopOptions();
         if (options == null) return;
 
-        try {
-            var worktop = WorktopInfo.newBuilder().addAllOptionList(options).build();
-            gadgetInfo.setWorktop(worktop);
-        } catch (NullPointerException ignored) {
-            // "this.wrapped" is null.
-            gadgetInfo.setWorktop(
-                    WorktopInfo.newBuilder().addAllOptionList(Collections.emptyList()).build());
-            Grasscutter.getLogger().warn("GadgetWorktop.onBuildProto: this.wrapped is null");
-        }
+        // try {
+        //     var worktop = WorktopInfo.newBuilder().addAllOptionList(options).build();
+        //     gadgetInfo.setWorktop(worktop); // field not in current proto
+        // } catch (NullPointerException ignored) {
+        //     // "this.wrapped" is null.
+        //     gadgetInfo.setWorktop(
+        //             WorktopInfo.newBuilder().addAllOptionList(Collections.emptyList()).build()); // field not in current proto
+        //     Grasscutter.getLogger().warn("GadgetWorktop.onBuildProto: this.wrapped is null");
+        // }
     }
 
     public void setOnSelectWorktopOptionEvent(WorktopWorktopOptionHandler handler) {

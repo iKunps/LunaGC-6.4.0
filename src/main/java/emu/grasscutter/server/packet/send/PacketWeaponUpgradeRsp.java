@@ -14,8 +14,8 @@ public class PacketWeaponUpgradeRsp extends BasePacket {
         WeaponUpgradeRsp proto =
                 WeaponUpgradeRsp.newBuilder()
                         .setTargetWeaponGuid(item.getGuid())
-                        .setCurLevel(item.getLevel())
-                        .setOldLevel(oldLevel)
+                        // .setCurLevel(item.getLevel()) // field not in current proto
+                        // .setOldLevel(oldLevel) // field not in current proto
                         .addAllItemParamList(leftoverOres)
                         .build();
 

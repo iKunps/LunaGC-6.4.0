@@ -40,7 +40,7 @@ public class EntityVehicle extends EntityBaseGadget {
 
     @Getter private final Player owner;
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     private final Int2FloatMap fightProperties;
 
     @Getter private final int pointId;
@@ -103,8 +103,9 @@ public class EntityVehicle extends EntityBaseGadget {
                         .setRendererChangedInfo(EntityRendererChangedInfo.newBuilder())
                         .setAiInfo(
                                 SceneEntityAiInfo.newBuilder()
-                                        .setIsAiOpen(true)
-                                        .setBornPos(getPosition().toProto()))
+                                        // .setIsAiOpen(true) // field not in current proto
+                                        // .setBornPos(getPosition().toProto()) // field not in current proto
+                                        )
                         .setBornPos(getPosition().toProto())
                         .build();
 
@@ -112,13 +113,13 @@ public class EntityVehicle extends EntityBaseGadget {
                 SceneGadgetInfo.newBuilder()
                         .setGadgetId(this.getGadgetId())
                         .setAuthorityPeerId(this.getOwner().getPeerId())
-                        .setIsEnableInteract(true)
-                        .setVehicleInfo(vehicle);
+                        .setIsEnableInteract(true);
+                        // .setVehicleInfo(vehicle); // field not in current proto
 
         SceneEntityInfo.Builder entityInfo =
                 SceneEntityInfo.newBuilder()
                         .setEntityId(getId())
-                        .setEntityType(ProtEntityType.PROT_ENTITY_TYPE_GADGET)
+                        .setEntityType(ProtEntityType.ProtEntityType_PROT_ENTITY_GADGET)
                         .setMotionInfo(
                                 MotionInfo.newBuilder()
                                         .setPos(getPosition().toProto())

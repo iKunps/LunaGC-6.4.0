@@ -13,7 +13,7 @@ public class PacketCompoundDataNotify extends BasePacket {
         var proto =
                 CompoundDataNotify.newBuilder()
                         .addAllUnlockCompoundList(unlockedCompounds)
-                        .addAllCompoundQueueDataList(compoundQueueData)
+                        // .addAllCompoundQueueDataList(compoundQueueData) // field not in current proto
                         .build();
         this.setData(proto);
     }

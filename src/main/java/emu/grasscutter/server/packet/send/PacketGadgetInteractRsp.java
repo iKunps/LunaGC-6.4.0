@@ -22,9 +22,9 @@ public class PacketGadgetInteractRsp extends BasePacket {
                         .setInteractType(interact)
                         .setGadgetId(gadget.getGadgetId());
 
-        if (opType != null) {
-            proto.setOpType(opType);
-        }
+        // if (opType != null) {
+        //     proto.setOpType(opType); // field not in current proto
+        // }
 
         this.setData(proto.build());
     }

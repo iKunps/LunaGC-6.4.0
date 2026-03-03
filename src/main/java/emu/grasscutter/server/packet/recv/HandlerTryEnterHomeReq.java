@@ -30,7 +30,7 @@ public class HandlerTryEnterHomeReq extends PacketHandler {
             // A person who rote this comment, I DID IT!!!!!! by hamusuke.
             switch (targetHome.getEnterHomeOption()) {
                 case FriendEnterHomeOptionOuterClass.FriendEnterHomeOption
-                        .FRIEND_ENTER_HOME_OPTION_NEED_CONFIRM_VALUE -> {
+                        .FriendEnterHomeOption_NEED_CONFIRM_VALUE -> {
                     if (!targetPlayer.isOnline()) {
                         session.send(
                                 new PacketTryEnterHomeRsp(
@@ -43,7 +43,7 @@ public class HandlerTryEnterHomeReq extends PacketHandler {
                     }
                 }
                 case FriendEnterHomeOptionOuterClass.FriendEnterHomeOption
-                        .FRIEND_ENTER_HOME_OPTION_REFUSE_VALUE -> {
+                        .FriendEnterHomeOption_REFUSE_VALUE -> {
                     session.send(
                             new PacketTryEnterHomeRsp(
                                     RetcodeOuterClass.Retcode.RET_HOME_HOME_REFUSE_GUEST_ENTER_VALUE,
@@ -51,7 +51,7 @@ public class HandlerTryEnterHomeReq extends PacketHandler {
                 }
 
                 case FriendEnterHomeOptionOuterClass.FriendEnterHomeOption
-                        .FRIEND_ENTER_HOME_OPTION_DIRECT_VALUE -> {
+                        .FriendEnterHomeOption_DIRECT_VALUE -> {
                     session
                             .getServer()
                             .getHomeWorldMPSystem()
@@ -59,7 +59,7 @@ public class HandlerTryEnterHomeReq extends PacketHandler {
                                     session.getPlayer(),
                                     targetPlayer,
                                     req.getTargetPoint(),
-                                    req.getIsTransferToSafePoint());
+                                    false); // req.getIsTransferToSafePoint() - field not in current proto
                 }
             }
 
@@ -73,6 +73,6 @@ public class HandlerTryEnterHomeReq extends PacketHandler {
                         session.getPlayer(),
                         targetPlayer,
                         req.getTargetPoint(),
-                        req.getIsTransferToSafePoint());
+                        false); // req.getIsTransferToSafePoint() - field not in current proto
     }
 }

@@ -25,22 +25,24 @@ public class PacketDoGachaRsp extends BasePacket {
                 };
         DoGachaRsp.Builder rsp =
                 DoGachaRsp.newBuilder()
-                        .setGachaType(banner.getGachaType())
-                        .setGachaScheduleId(banner.getScheduleId())
+                        // .setGachaType(banner.getGachaType()) // field not in current proto
+                        // .setGachaScheduleId(banner.getScheduleId()) // field not in current proto
                         .setGachaTimes(list.size())
-                        .setNewGachaRandom(12345)
-                        .setLeftGachaTimes(leftGachaTimes)
-                        .setGachaTimesLimit(gachaTimesLimit)
-                        .setCostItemId(costItem.getId())
-                        .setCostItemNum(costItem.getCount())
-                        .setTenCostItemId(costItem10.getId())
-                        .setTenCostItemNum(costItem10.getCount())
-                        .addAllGachaItemList(list);
+                        // .setNewGachaRandom(12345) // field not in current proto
+                        // .setLeftGachaTimes(leftGachaTimes) // field not in current proto
+                        // .setGachaTimesLimit(gachaTimesLimit) // field not in current proto
+                        // .setCostItemId(costItem.getId()) // field not in current proto
+                        // .setCostItemNum(costItem.getCount()) // field not in current proto
+                        // .setTenCostItemId(costItem10.getId()) // field not in current proto
+                        // .setTenCostItemNum(costItem10.getCount()) // field not in current proto
+                        // .addAllGachaItemList(list) // field not in current proto
+                        ;
 
         if (banner.hasEpitomized()) {
-            rsp.setWishItemId(gachaInfo.getWishItemId())
-                    .setWishProgress(gachaInfo.getFailedChosenItemPulls())
-                    .setWishMaxProgress(banner.getWishMaxProgress());
+            // rsp // field not in current proto
+                    // .setWishItemId(gachaInfo.getWishItemId())
+                    // .setWishProgress(gachaInfo.getFailedChosenItemPulls())
+                    // .setWishMaxProgress(banner.getWishMaxProgress());
         }
 
         this.setData(rsp.build());

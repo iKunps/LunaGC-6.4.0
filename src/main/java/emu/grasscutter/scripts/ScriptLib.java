@@ -1285,7 +1285,7 @@ public class ScriptLib {
         if (entity == null || entity.getEntityType().getValue() != entityType) {
             return 1;
         }
-        getSceneScriptManager().getScene().removeEntity(entity, VisionType.VISION_TYPE_REMOVE);
+        getSceneScriptManager().getScene().removeEntity(entity, VisionType.VisionType_VISION_REMOVE);
         return 0;
     }
 
@@ -1794,7 +1794,7 @@ public class ScriptLib {
             p.getPosition().set(targetPos);
 
             // Teleport packet
-            p.sendPacket(new PacketPlayerEnterSceneNotify(p, EnterTypeOuterClass.EnterType.ENTER_TYPE_GOTO, Lua, scene.getId(), targetPos));
+            p.sendPacket(new PacketPlayerEnterSceneNotify(p, EnterTypeOuterClass.EnterType.EnterType_ENTER_GOTO, Lua, scene.getId(), targetPos));
         });
         return 0;
     }

@@ -1,6 +1,5 @@
 package emu.grasscutter.game.dungeons;
 
-import emu.grasscutter.net.proto.TrialAvatarGrantRecordOuterClass.TrialAvatarGrantRecord;
 import java.util.List;
 import lombok.*;
 
@@ -8,5 +7,5 @@ import lombok.*;
 @AllArgsConstructor
 public class DungeonTrialTeam {
     List<Integer> trialAvatarIds;
-    TrialAvatarGrantRecord.GrantReason grantReason;
+    int grantReason;
 }

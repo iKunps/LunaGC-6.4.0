@@ -200,7 +200,7 @@ public class Player implements PlayerHook, FieldFetch {
     @Getter @Setter private int nextResinRefresh;
     @Getter @Setter private int resinBuyCount;
     @Getter @Setter private int lastDailyReset;
-    @Getter private transient MpSettingType mpSetting = MpSettingType.MP_SETTING_TYPE_ENTER_AFTER_APPLY;
+    @Getter private transient MpSettingType mpSetting = MpSettingType.MpSettingType_MP_SETTING_ENTER_AFTER_APPLY;
     @Getter private long playerGameTime = 540000; // 9 in-game hours. Present at the start of the game.
 
     @Getter private PlayerProgress playerProgress;
@@ -1251,7 +1251,7 @@ public class Player implements PlayerHook, FieldFetch {
         req.getRequester().sendPacket(new PacketPlayerApplyEnterMpResultNotify(
             this,
             false,
-            PlayerApplyEnterMpResultNotifyOuterClass.PlayerApplyEnterMpResultNotify.Reason.REASON_SYSTEM_JUDGE));
+            PlayerApplyEnterMpResultNotifyOuterClass.PlayerApplyEnterMpResultNotify.Reason.Reason_SYSTEM_JUDGE));
         return true;
     }
 
@@ -1265,7 +1265,7 @@ public class Player implements PlayerHook, FieldFetch {
             this.getUid(),
             this.getNickname(),
             false,
-            PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason.SYSTEM_JUDGE));
+            PlayerApplyEnterHomeResultNotifyOuterClass.PlayerApplyEnterHomeResultNotify.Reason.Reason_SYSTEM_JUDGE));
         req.getRequester().sendPacket(new PacketTryEnterHomeRsp());
         return true;
     }
@@ -1649,15 +1649,15 @@ public class Player implements PlayerHook, FieldFetch {
                 // Send property change reasons if needed.
                 switch (prop) {
                     case PROP_PLAYER_EXP -> this.sendPacket(new PacketPlayerPropChangeReasonNotify(this, prop, currentValue, value,
-                        PropChangeReason.PROP_CHANGE_REASON_PLAYER_ADD_EXP));
+                        PropChangeReason.PropChangeReason_PROP_CHANGE_PLAYER_ADD_EXP));
                     case PROP_PLAYER_LEVEL -> this.sendPacket(new PacketPlayerPropChangeReasonNotify(this, prop, currentValue, value,
-                        PropChangeReason.PROP_CHANGE_REASON_LEVELUP));
+                        PropChangeReason.PropChangeReason_PROP_CHANGE_LEVELUP));
                     case PROP_MAX_STAMINA -> this.sendPacket(new PacketPlayerPropChangeReasonNotify(this, prop, currentValue, value,
-                        PropChangeReason.PROP_CHANGE_REASON_CITY_LEVELUP));
+                        PropChangeReason.PropChangeReason_PROP_CHANGE_CITY_LEVELUP));
 
                     // TODO: Handle world level changing.
                     // case PROP_PLAYER_WORLD_LEVEL -> this.sendPacket(new PacketPlayerPropChangeReasonNotify(this, prop, currentValue, value,
-                    //     PropChangeReason.PROP_CHANGE_REASON_MANUAL_ADJUST_WORLD_LEVEL));
+                    //     PropChangeReason.PropChangeReason_PROP_CHANGE_MANUAL_ADJUST_WORLD_LEVEL));
                 }
 
                 // Update player with packet.

@@ -141,7 +141,7 @@ public class SotSManager extends BasePlayerManager {
                                         FightProperty.FIGHT_PROP_CUR_HP,
                                         ((float) needHP / 100),
                                         List.of(3),
-                                        PropChangeReason.PROP_CHANGE_REASON_STATUE_RECOVER,
+                                        PropChangeReason.PropChangeReason_PROP_CHANGE_STATUE_RECOVER,
                                         ChangeHpReason.CHANGE_HP_ADD_STATUE));
                 player
                         .getSession()

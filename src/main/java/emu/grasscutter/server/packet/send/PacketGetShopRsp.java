@@ -18,8 +18,8 @@ public class PacketGetShopRsp extends BasePacket {
         Shop.Builder shop =
                 Shop.newBuilder()
                         .setShopType(shopType)
-                        .setCityId(1) // mock
-                        .setCityReputationLevel(10); // mock
+                        .setCityId(1); // mock
+                        // .setCityReputationLevel(10) // mock // field not in current proto
 
         ShopSystem manager = Grasscutter.getGameServer().getShopSystem();
         if (manager.getShopData().get(shopType) != null) {
@@ -35,16 +35,16 @@ public class PacketGetShopRsp extends BasePacket {
                                                 .setItemId(info.getGoodsItem().getId())
                                                 .setCount(info.getGoodsItem().getCount())
                                                 .build())
-                                .setScoin(info.getScoin())
-                                .setHcoin(info.getHcoin())
-                                .setBuyLimit(info.getBuyLimit())
+                                // .setScoin(info.getScoin()) // field not in current proto
+                                // .setHcoin(info.getHcoin()) // field not in current proto
+                                // .setBuyLimit(info.getBuyLimit()) // field not in current proto
                                 .setBeginTime(info.getBeginTime())
                                 .setEndTime(info.getEndTime())
-                                .setMinLevel(info.getMinLevel())
-                                .setMaxLevel(info.getMaxLevel())
-                                .setMcoin(info.getMcoin())
-                                .setDisableType(info.getDisableType())
-                                .setLKICBMCBHMH(true);
+                                // .setMinLevel(info.getMinLevel()) // field not in current proto
+                                .setMaxLevel(info.getMaxLevel());
+                                // .setMcoin(info.getMcoin()) // field not in current proto
+                                // .setDisableType(info.getDisableType()) // field not in current proto
+                                // .setLKICBMCBHMH(true) // field not in current proto
 
                 if (info.getCostItemList() != null) {
                     goods.addAllCostItemList(
@@ -57,9 +57,9 @@ public class PacketGetShopRsp extends BasePacket {
                                     .collect(Collectors.toList()));
                 }
                 
-                if (info.getPreGoodsIdList() != null) {
-                    goods.addAllPreGoodsIdList(info.getPreGoodsIdList());
-                }
+                // if (info.getPreGoodsIdList() != null) {
+                //     goods.addAllPreGoodsIdList(info.getPreGoodsIdList()); // field not in current proto
+                // }
 
                 int currentTs = Utils.getCurrentSeconds();
                 ShopLimit currentShopLimit = player.getGoodsLimit(info.getGoodsId());
@@ -70,7 +70,7 @@ public class PacketGetShopRsp extends BasePacket {
                         currentShopLimit.setHasBoughtInPeriod(0);
                         currentShopLimit.setNextRefreshTime(nextRefreshTime);
                     }
-                    goods.setBoughtNum(currentShopLimit.getHasBoughtInPeriod());
+                    // goods.setBoughtNum(currentShopLimit.getHasBoughtInPeriod()); // field not in current proto
                     goods.setNextRefreshTime(currentShopLimit.getNextRefreshTime());
                 } else {
                     player.addShopLimit(goods.getGoodsId(), 0, nextRefreshTime);

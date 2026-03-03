@@ -256,7 +256,7 @@ public final class SceneEntityUpdateNotifyOuterClass {
       for (int i = 0; i < entityList_.size(); i++) {
         output.writeMessage(12, entityList_.get(i));
       }
-      if (appearType_ != emu.grasscutter.net.proto.VisionTypeOuterClass.VisionType.VISION_TYPE_NONE.getNumber()) {
+      if (appearType_ != emu.grasscutter.net.proto.VisionTypeOuterClass.VisionType.VisionType_VISION_NONE.getNumber()) {
         output.writeEnum(14, appearType_);
       }
       unknownFields.writeTo(output);
@@ -276,7 +276,7 @@ public final class SceneEntityUpdateNotifyOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, entityList_.get(i));
       }
-      if (appearType_ != emu.grasscutter.net.proto.VisionTypeOuterClass.VisionType.VISION_TYPE_NONE.getNumber()) {
+      if (appearType_ != emu.grasscutter.net.proto.VisionTypeOuterClass.VisionType.VisionType_VISION_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(14, appearType_);
       }

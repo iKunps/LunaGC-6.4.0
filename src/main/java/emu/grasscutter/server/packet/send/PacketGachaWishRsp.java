@@ -9,13 +9,9 @@ public class PacketGachaWishRsp extends BasePacket {
             int gachaType, int scheduleId, int itemId, int progress, int maxProgress) {
         super(PacketOpcodes.GachaWishRsp);
 
+        // Most GachaWishRsp fields not in current proto
         GachaWishRsp proto =
                 GachaWishRsp.newBuilder()
-                        .setGachaType(gachaType)
-                        .setGachaScheduleId(scheduleId)
-                        .setWishItemId(itemId)
-                        .setWishProgress(progress)
-                        .setWishMaxProgress(maxProgress)
                         .build();
 
         this.setData(proto);

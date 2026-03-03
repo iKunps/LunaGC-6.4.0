@@ -1086,7 +1086,7 @@ public final class FriendBriefOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(signature_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, signature_);
       }
-      if (onlineState_ != emu.grasscutter.net.proto.FriendOnlineStateOuterClass.FriendOnlineState.FRIEND_ONLINE_STATE_DISCONNECT.getNumber()) {
+      if (onlineState_ != emu.grasscutter.net.proto.FriendOnlineStateOuterClass.FriendOnlineState.FriendOnlineState_FREIEND_DISCONNECT.getNumber()) {
         output.writeEnum(7, onlineState_);
       }
       if (param_ != 0) {
@@ -1119,7 +1119,7 @@ public final class FriendBriefOuterClass {
       for (int i = 0; i < showAvatarInfoList_.size(); i++) {
         output.writeMessage(22, showAvatarInfoList_.get(i));
       }
-      if (friendEnterHomeOption_ != emu.grasscutter.net.proto.FriendEnterHomeOptionOuterClass.FriendEnterHomeOption.FRIEND_ENTER_HOME_OPTION_NEED_CONFIRM.getNumber()) {
+      if (friendEnterHomeOption_ != emu.grasscutter.net.proto.FriendEnterHomeOptionOuterClass.FriendEnterHomeOption.FriendEnterHomeOption_NEED_CONFIRM.getNumber()) {
         output.writeEnum(23, friendEnterHomeOption_);
       }
       if (profilePicture_ != null) {
@@ -1131,7 +1131,7 @@ public final class FriendBriefOuterClass {
       if (isPsnSource_ != false) {
         output.writeBool(26, isPsnSource_);
       }
-      if (platformType_ != emu.grasscutter.net.proto.PlatformTypeOuterClass.PlatformType.PLATFORM_TYPE_EDITOR.getNumber()) {
+      if (platformType_ != emu.grasscutter.net.proto.PlatformTypeOuterClass.PlatformType.PlatformType_EDITOR.getNumber()) {
         output.writeEnum(27, platformType_);
       }
       if (isInDuel_ != false) {
@@ -1183,7 +1183,7 @@ public final class FriendBriefOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(signature_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, signature_);
       }
-      if (onlineState_ != emu.grasscutter.net.proto.FriendOnlineStateOuterClass.FriendOnlineState.FRIEND_ONLINE_STATE_DISCONNECT.getNumber()) {
+      if (onlineState_ != emu.grasscutter.net.proto.FriendOnlineStateOuterClass.FriendOnlineState.FriendOnlineState_FREIEND_DISCONNECT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(7, onlineState_);
       }
@@ -1225,7 +1225,7 @@ public final class FriendBriefOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(22, showAvatarInfoList_.get(i));
       }
-      if (friendEnterHomeOption_ != emu.grasscutter.net.proto.FriendEnterHomeOptionOuterClass.FriendEnterHomeOption.FRIEND_ENTER_HOME_OPTION_NEED_CONFIRM.getNumber()) {
+      if (friendEnterHomeOption_ != emu.grasscutter.net.proto.FriendEnterHomeOptionOuterClass.FriendEnterHomeOption.FriendEnterHomeOption_NEED_CONFIRM.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(23, friendEnterHomeOption_);
       }
@@ -1241,7 +1241,7 @@ public final class FriendBriefOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(26, isPsnSource_);
       }
-      if (platformType_ != emu.grasscutter.net.proto.PlatformTypeOuterClass.PlatformType.PLATFORM_TYPE_EDITOR.getNumber()) {
+      if (platformType_ != emu.grasscutter.net.proto.PlatformTypeOuterClass.PlatformType.PlatformType_EDITOR.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(27, platformType_);
       }

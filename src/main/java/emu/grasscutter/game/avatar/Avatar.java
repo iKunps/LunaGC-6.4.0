@@ -91,7 +91,7 @@ public class Avatar {
     @Getter @Setter private int trialAvatarId = 0;
     // cannot store to db if grant reason is not integer
     @Getter @Setter
-    private int grantReason = TrialAvatarGrantRecord.GrantReason.GRANT_REASON_INVALID.getNumber();
+    private int grantReason = 0; // GRANT_REASON_INVALID
 
     @Getter @Setter private int fromParentQuestId = 0;
     // so far no outer class or prop value has information of this, but from packet:
@@ -1165,11 +1165,11 @@ public class Avatar {
      * @param questId The ID of the quest that granted the avatar.
      */
     public void setTrialAvatarInfo(
-            int level, int avatarId, TrialAvatarGrantRecord.GrantReason grantReason, int questId) {
+            int level, int avatarId, int grantReason, int questId) {
         this.setLevel(level);
         this.setPromoteLevel(getMinPromoteLevel(level));
         this.setTrialAvatarId(avatarId);
-        this.setGrantReason(grantReason.getNumber());
+        this.setGrantReason(grantReason);
         this.setFromParentQuestId(questId);
         this.setAvatarType(Type.TRIAL.getNumber());
         this.applyTrialSkillLevels();

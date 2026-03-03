@@ -12,9 +12,9 @@ public class PacketProudSkillExtraLevelNotify extends BasePacket {
         ProudSkillExtraLevelNotify proto =
                 ProudSkillExtraLevelNotify.newBuilder()
                         .setAvatarGuid(avatar.getGuid())
-                        .setTalentType(3) // Talent type = 3
-                        .setTalentIndex(talentIndex)
-                        .setExtraLevel(3)
+                        // .setTalentType(3) // Talent type = 3 // field not in current proto
+                        // .setTalentIndex(talentIndex) // field not in current proto
+                        // .setExtraLevel(3) // field not in current proto
                         .build();
 
         this.setData(proto);

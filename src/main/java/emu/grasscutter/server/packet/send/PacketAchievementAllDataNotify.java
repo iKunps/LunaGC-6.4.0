@@ -12,10 +12,7 @@ public class PacketAchievementAllDataNotify extends BasePacket {
         var achievements = player.getAchievements();
         var notify =
                 AchievementAllDataNotifyOuterClass.AchievementAllDataNotify.newBuilder()
-                        .addAllAchievementList(
-                                achievements.getAchievementList().values().stream()
-                                        .map(Achievement::toProto)
-                                        .toList())
+                        // .addAllAchievementList(achievements.getAchievementList().values().stream().map(Achievement::toProto).toList()) // field not in current proto
                         .addAllRewardTakenGoalIdList(achievements.getTakenGoalRewardIdList())
                         .build();
 

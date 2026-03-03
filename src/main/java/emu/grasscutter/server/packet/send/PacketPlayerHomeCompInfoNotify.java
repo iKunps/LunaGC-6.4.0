@@ -18,9 +18,9 @@ public class PacketPlayerHomeCompInfoNotify extends BasePacket {
                 PlayerHomeCompInfoNotifyOuterClass.PlayerHomeCompInfoNotify.newBuilder()
                         .setCompInfo(
                                 PlayerHomeCompInfoOuterClass.PlayerHomeCompInfo.newBuilder()
-                                        .addAllUnlockedModuleIdList(player.getRealmList())
-                                        .addAllLevelupRewardGotLevelList(player.getHomeRewardedLevels())
-                                        .addAllSeenModuleIdList(player.getSeenRealmList())
+                                        // .addAllUnlockedModuleIdList(player.getRealmList()) // field not in current proto
+                                        // .addAllLevelupRewardGotLevelList(player.getHomeRewardedLevels()) // field not in current proto
+                                        // .addAllSeenModuleIdList(player.getSeenRealmList()) // field not in current proto
                                         .setFriendEnterHomeOptionValue(player.getHome().getEnterHomeOption())
                                         .build())
                         .build();

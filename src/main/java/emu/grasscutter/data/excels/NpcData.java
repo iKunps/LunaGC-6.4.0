@@ -6,7 +6,7 @@ import lombok.Getter;
 @ResourceType(name = "NpcExcelConfigData.json")
 @Getter
 public class NpcData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter
     private int id;
 
     private String jsonName;

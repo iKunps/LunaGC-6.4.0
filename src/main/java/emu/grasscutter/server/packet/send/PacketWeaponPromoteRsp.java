@@ -12,8 +12,8 @@ public class PacketWeaponPromoteRsp extends BasePacket {
         WeaponPromoteRsp proto =
                 WeaponPromoteRsp.newBuilder()
                         .setTargetWeaponGuid(item.getGuid())
-                        .setCurPromoteLevel(item.getPromoteLevel())
-                        .setOldPromoteLevel(oldPromoteLevel)
+                        // .setCurPromoteLevel(item.getPromoteLevel()) // field not in current proto
+                        // .setOldPromoteLevel(oldPromoteLevel) // field not in current proto
                         .build();
 
         this.setData(proto);

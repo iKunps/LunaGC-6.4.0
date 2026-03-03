@@ -11,7 +11,7 @@ public class PacketPlayerPreEnterMpNotify extends BasePacket {
         this.setData(
                 PlayerPreEnterMpNotifyOuterClass.PlayerPreEnterMpNotify.newBuilder()
                         .setUid(player.getUid())
-                        .setNickname(player.getNickname())
-                        .setState(PlayerPreEnterMpNotifyOuterClass.PlayerPreEnterMpNotify.State.START));
+                        .setNickname(player.getNickname()));
+                        // .setState(PlayerPreEnterMpNotifyOuterClass.PlayerPreEnterMpNotify.State.START) // field not in current proto
     }
 }

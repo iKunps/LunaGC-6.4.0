@@ -8,6 +8,7 @@ import emu.grasscutter.game.world.Position;
 import emu.grasscutter.net.packet.*;
 import emu.grasscutter.net.proto.AttackResultOuterClass.AttackResult;
 import emu.grasscutter.net.proto.CombatInvocationsNotifyOuterClass.CombatInvocationsNotify;
+import emu.grasscutter.net.proto.ForwardTypeOuterClass.ForwardType;
 import emu.grasscutter.net.proto.CombatInvokeEntryOuterClass.CombatInvokeEntry;
 import emu.grasscutter.net.proto.EntityMoveInfoOuterClass.EntityMoveInfo;
 import emu.grasscutter.net.proto.EvtAnimatorParameterInfoOuterClass.EvtAnimatorParameterInfo;
@@ -32,7 +33,7 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
         for (CombatInvokeEntry entry : notif.getInvokeListList()) {
             // Handle combat invoke
             switch (entry.getArgumentType()) {
-                case COMBAT_TYPE_ARGUMENT_EVT_BEING_HIT -> {
+                case CombatTypeArgument_COMBAT_EVT_BEING_HIT -> {
                     EvtBeingHitInfo hitInfo = EvtBeingHitInfo.parseFrom(entry.getCombatData());
                     AttackResult attackResult = hitInfo.getAttackResult();
                     Player player = session.getPlayer();
@@ -46,7 +47,7 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
                     player.getAttackResults().add(attackResult);
                     player.getEnergyManager().handleAttackHit(hitInfo);
                 }
-                case COMBAT_TYPE_ARGUMENT_ENTITY_MOVE -> {
+                case CombatTypeArgument_ENTITY_MOVE -> {
                     // Handle movement
                     EntityMoveInfo moveInfo = EntityMoveInfo.parseFrom(entry.getCombatData());
                     GameEntity entity = session.getPlayer().getScene().getEntityById(moveInfo.getEntityId());
@@ -54,7 +55,7 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
                             && session.getPlayer().getSceneLoadState() != Player.SceneLoadState.LOADING) {
                         // Move player
                         MotionInfo motionInfo = moveInfo.getMotionInfo();
-                        MotionState motionState = motionInfo.getState();
+                        MotionState motionState = MotionState.MOTION_STATE_NONE; // motionInfo.getState() - field not in current proto
 
                         // Call entity move event.
                         EntityMoveEvent event =
@@ -101,7 +102,7 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
                         }
                     }
                 }
-                case COMBAT_TYPE_ARGUMENT_ANIMATOR_PARAMETER_CHANGED -> {
+                case CombatTypeArgument_COMBAT_ANIMATOR_PARAMETER_CHANGED -> {
                     EvtAnimatorParameterInfo paramInfo =
                             EvtAnimatorParameterInfo.parseFrom(entry.getCombatData());
                     if (paramInfo.getIsServerCache()) {
@@ -112,7 +113,7 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
                 default -> {}
             }
 
-            session.getPlayer().getCombatInvokeHandler().addEntry(entry.getForwardType(), entry);
+            session.getPlayer().getCombatInvokeHandler().addEntry(ForwardType.FORWARD_TYPE_TO_ALL, entry); // entry.getForwardType() - field not in current proto
         }
     }
 
@@ -185,7 +186,7 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
             session
                     .getPlayer()
                     .getStaminaManager()
-                    .killAvatar(session, entity, PlayerDieTypeOuterClass.PlayerDieType.PLAYER_DIE_TYPE_FALL);
+                    .killAvatar(session, entity, PlayerDieTypeOuterClass.PlayerDieType.PlayerDieType_PLAYER_DIE_FALL);
         }
         cachedLandingSpeed = 0;
     }

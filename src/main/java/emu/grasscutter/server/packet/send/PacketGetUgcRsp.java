@@ -17,7 +17,7 @@ public class PacketGetUgcRsp extends BasePacket {
         proto
                 .setUgcGuid(briefInfo.getUgcGuid())
                 .setUgcType(req.getUgcType())
-                .setUgcRecordUsageValue(req.getUgcRecordUsageValue())
+                // .setUgcRecordUsageValue(req.getUgcRecordUsageValue()) // field not in current proto
                 .setMusicRecord(musicRecord)
                 .setMusicBriefInfo(briefInfo);
 
@@ -32,7 +32,7 @@ public class PacketGetUgcRsp extends BasePacket {
         proto
                 .setUgcGuid(req.getUgcGuid())
                 .setUgcType(req.getUgcType())
-                .setUgcRecordUsageValue(req.getUgcRecordUsageValue())
+                // .setUgcRecordUsageValue(req.getUgcRecordUsageValue()) // field not in current proto
                 .setRetcode(errorCode.getNumber());
 
         this.setData(proto);

@@ -200,7 +200,7 @@ public final class PKLKCKAALNFOuterClass {
       if (retcode_ != 0) {
         output.writeInt32(10, retcode_);
       }
-      if (ugcType_ != emu.grasscutter.net.proto.UgcTypeOuterClass.UgcType.UGC_TYPE_NONE.getNumber()) {
+      if (ugcType_ != emu.grasscutter.net.proto.UgcTypeOuterClass.UgcType.UgcType_NONE.getNumber()) {
         output.writeEnum(15, ugcType_);
       }
       unknownFields.writeTo(output);
@@ -220,7 +220,7 @@ public final class PKLKCKAALNFOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, retcode_);
       }
-      if (ugcType_ != emu.grasscutter.net.proto.UgcTypeOuterClass.UgcType.UGC_TYPE_NONE.getNumber()) {
+      if (ugcType_ != emu.grasscutter.net.proto.UgcTypeOuterClass.UgcType.UgcType_NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(15, ugcType_);
       }

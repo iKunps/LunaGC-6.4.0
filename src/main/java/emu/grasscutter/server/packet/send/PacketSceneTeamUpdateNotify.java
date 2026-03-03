@@ -23,11 +23,12 @@ public class PacketSceneTeamUpdateNotify extends BasePacket {
                                 .setSceneEntityInfo(entityAvatar.toProto())
                                 .setWeaponGuid(entityAvatar.getAvatar().getWeaponNotNull().getGuid())
                                 .setWeaponEntityId(entityAvatar.getWeaponEntityId())
-                                .setIsPlayerCurAvatar(p.getTeamManager().getCurrentAvatarEntity() == entityAvatar)
-                                .setIsOnScene(p.getTeamManager().getCurrentAvatarEntity() == entityAvatar)
-                                .setAvatarAbilityInfo(AbilitySyncStateInfo.newBuilder())
-                                .setWeaponAbilityInfo(AbilitySyncStateInfo.newBuilder())
-                                .setAbilityControlBlock(entityAvatar.getAbilityControlBlock());
+                                // .setIsPlayerCurAvatar(p.getTeamManager().getCurrentAvatarEntity() == entityAvatar) // field not in current proto
+                                // .setIsOnScene(p.getTeamManager().getCurrentAvatarEntity() == entityAvatar) // field not in current proto
+                                // .setAvatarAbilityInfo(AbilitySyncStateInfo.newBuilder()) // field not in current proto
+                                // .setWeaponAbilityInfo(AbilitySyncStateInfo.newBuilder()) // field not in current proto
+                                // .setAbilityControlBlock(entityAvatar.getAbilityControlBlock()) // field not in current proto
+                                ;
 
                 if (player.getWorld().isMultiplayer()) {
                     avatarProto.setAvatarInfo(entityAvatar.getAvatar().toProto());

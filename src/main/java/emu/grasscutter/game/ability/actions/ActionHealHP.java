@@ -145,7 +145,7 @@ public final class ActionHealHP extends AbilityActionHandler {
                 target,
                 FightProperty.FIGHT_PROP_CUR_HP_DEBTS,
                 changeDebt,
-                PropChangeReasonOuterClass.PropChangeReason.PROP_CHANGE_REASON_ABILITY,
+                PropChangeReasonOuterClass.PropChangeReason.PropChangeReason_PROP_CHANGE_ABILITY,
                 ChangeHpDebtsReasonOuterClass.ChangeHpDebtsReason.CHANGE_HP_DEBTS_ADD_ABILITY
             ));
         }
@@ -187,7 +187,7 @@ public final class ActionHealHP extends AbilityActionHandler {
         float maxHp = target.getFightProperty(FightProperty.FIGHT_PROP_MAX_HP);
         if (curHp < maxHp && furina != null) {
                 float energyToAdd = 4.0f; 
-                furina.addEnergy(energyToAdd, PropChangeReasonOuterClass.PropChangeReason.PROP_CHANGE_REASON_ABILITY);        
+                furina.addEnergy(energyToAdd, PropChangeReasonOuterClass.PropChangeReason.PropChangeReason_PROP_CHANGE_ABILITY);        
             }
         
         if (furina != null && ability.getOwner() != furina) { // Healing source is not Furina

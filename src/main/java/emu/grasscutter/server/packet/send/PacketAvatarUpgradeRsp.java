@@ -15,8 +15,8 @@ public class PacketAvatarUpgradeRsp extends BasePacket {
         AvatarUpgradeRsp proto =
                 AvatarUpgradeRsp.newBuilder()
                         .setAvatarGuid(avatar.getGuid())
-                        .setOldLevel(oldLevel)
-                        .setCurLevel(avatar.getLevel())
+                        // .setOldLevel(oldLevel) // field not in current proto
+                        // .setCurLevel(avatar.getLevel()) // field not in current proto
                         //.putAllOldFightPropMap(oldFightPropMap)
                         //.putAllCurFightPropMap(avatar.getFightProperties())
                         .build();

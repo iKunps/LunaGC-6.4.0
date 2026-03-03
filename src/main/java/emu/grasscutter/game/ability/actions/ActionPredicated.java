@@ -55,7 +55,7 @@ public final class ActionPredicated extends AbilityActionHandler {
                         teamMember,
                         FightProperty.FIGHT_PROP_CUR_HP,
                         -consumeHP,
-                        PropChangeReasonOuterClass.PropChangeReason.PROP_CHANGE_REASON_ABILITY,
+                        PropChangeReasonOuterClass.PropChangeReason.PropChangeReason_PROP_CHANGE_ABILITY,
                         ChangeHpReason.CHANGE_HP_REASON_SUB_ABILITY
                     ));
                 }

@@ -326,7 +326,7 @@ public final class AHEBDJGHKFNOuterClass {
       for (int i = 0; i < cKEEDGHGPPL_.size(); i++) {
         output.writeMessage(5, cKEEDGHGPPL_.get(i));
       }
-      if (aIDKGEOMNKG_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DUNGEON_CANDIDATE_TEAM_PLAYER_STATE_IDLE.getNumber()) {
+      if (aIDKGEOMNKG_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DungeonCandidateTeamPlayerState_IDLE.getNumber()) {
         output.writeEnum(9, aIDKGEOMNKG_);
       }
       for (int i = 0; i < aDKAEDEJEPE_.size(); i++) {
@@ -348,7 +348,7 @@ public final class AHEBDJGHKFNOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, cKEEDGHGPPL_.get(i));
       }
-      if (aIDKGEOMNKG_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DUNGEON_CANDIDATE_TEAM_PLAYER_STATE_IDLE.getNumber()) {
+      if (aIDKGEOMNKG_ != emu.grasscutter.net.proto.DungeonCandidateTeamPlayerStateOuterClass.DungeonCandidateTeamPlayerState.DungeonCandidateTeamPlayerState_IDLE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(9, aIDKGEOMNKG_);
       }

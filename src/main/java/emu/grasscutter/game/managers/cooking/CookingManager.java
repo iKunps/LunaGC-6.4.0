@@ -63,8 +63,10 @@ public class CookingManager extends BasePlayerManager {
     public void handlePlayerCookReq(PlayerCookReq req) {
         // Get info from the request.
         int recipeId = req.getRecipeId();
-        int quality = req.getQteQuality();
-        int count = req.getCookCount();
+        // int quality = req.getQteQuality(); // field not in current proto
+        // int count = req.getCookCount(); // field not in current proto
+        int quality = 0; // default value, original proto field removed
+        int count = 1; // default value, original proto field removed
         int avatar = req.getAssistAvatar();
 
         // Get recipe data.
@@ -169,7 +171,7 @@ public class CookingManager extends BasePlayerManager {
                         data.add(
                                 CookRecipeDataOuterClass.CookRecipeData.newBuilder()
                                         .setRecipeId(recipeId)
-                                        .setProficiency(proficiency)
+                                        // .setProficiency(proficiency) // field not in current proto
                                         .build()));
 
         // Send packet.

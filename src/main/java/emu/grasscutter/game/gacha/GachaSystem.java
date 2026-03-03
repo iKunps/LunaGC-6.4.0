@@ -2,7 +2,7 @@ package emu.grasscutter.game.gacha;
 
 import static emu.grasscutter.config.Configuration.GAME_OPTIONS;
 
-import com.sun.nio.file.SensitivityWatchEventModifier;
+// import com.sun.nio.file.SensitivityWatchEventModifier; // not available in current JDK
 import emu.grasscutter.Grasscutter;
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.ItemParamData;
@@ -336,7 +336,7 @@ public class GachaSystem extends BaseGameSystem {
                     }
                     break;
                 case -1: // New character
-                    gachaItem.setIsGachaItemNew(true);
+                    // gachaItem.setIsGachaItemNew(true); // field not in current proto
                     break;
                 default:
                     if (constellation >= 6) { // C6, give consolation starglitter
@@ -427,8 +427,7 @@ public class GachaSystem extends BaseGameSystem {
                 FileUtils.getDataUserPath("")
                         .register(
                                 watchService,
-                                new WatchEvent.Kind[] {StandardWatchEventKinds.ENTRY_MODIFY},
-                                SensitivityWatchEventModifier.HIGH);
+                                new WatchEvent.Kind[] {StandardWatchEventKinds.ENTRY_MODIFY});
             } catch (Exception e) {
                 Grasscutter.getLogger()
                         .error(
@@ -468,7 +467,7 @@ public class GachaSystem extends BaseGameSystem {
     }
 
     private synchronized GetGachaInfoRsp createProto(Player player) {
-        GetGachaInfoRsp.Builder proto = GetGachaInfoRsp.newBuilder().setGachaRandom(12345);
+        GetGachaInfoRsp.Builder proto = GetGachaInfoRsp.newBuilder(); // .setGachaRandom(12345) - field not in current proto
 
         long currentTime = System.currentTimeMillis() / 1000L;
 

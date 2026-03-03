@@ -16,10 +16,11 @@ public class PacketWeaponAwakenRsp extends BasePacket {
                         .setTargetWeaponGuid(item.getGuid())
                         .setTargetWeaponAwakenLevel(item.getRefinement());
 
-        for (int affixId : item.getAffixes()) {
-            proto.putOldAffixLevelMap(affixId, oldRefineLevel);
-            proto.putCurAffixLevelMap(affixId, item.getRefinement());
-        }
+        // putOldAffixLevelMap and putCurAffixLevelMap not in current proto
+        // for (int affixId : item.getAffixes()) {
+        //     proto.putOldAffixLevelMap(affixId, oldRefineLevel);
+        //     proto.putCurAffixLevelMap(affixId, item.getRefinement());
+        // }
 
         if (avatar != null) {
             proto.setAvatarGuid(avatar.getGuid());

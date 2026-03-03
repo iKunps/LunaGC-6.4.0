@@ -14,11 +14,11 @@ public class PacketReliquaryUpgradeRsp extends BasePacket {
         ReliquaryUpgradeRsp proto =
                 ReliquaryUpgradeRsp.newBuilder()
                         .setTargetReliquaryGuid(relic.getGuid())
-                        .setOldLevel(oldLevel)
-                        .setCurLevel(relic.getLevel())
-                        .setPowerUpRate(rate)
-                        .addAllOldAppendPropList(oldAppendPropIdList)
-                        .addAllCurAppendPropList(relic.getAppendPropIdList())
+                        // .setOldLevel(oldLevel) // field not in current proto
+                        // .setCurLevel(relic.getLevel()) // field not in current proto
+                        // .setPowerUpRate(rate) // field not in current proto
+                        // .addAllOldAppendPropList(oldAppendPropIdList) // field not in current proto
+                        // .addAllCurAppendPropList(relic.getAppendPropIdList()) // field not in current proto
                         .build();
 
         this.setData(proto);

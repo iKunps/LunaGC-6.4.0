@@ -45,15 +45,9 @@ public class PacketHomeMarkPointNotify extends BasePacket {
                                             .setModuleId(moduleId)
                                             .setSceneId(homeSceneItem.getSceneId());
 
-                            if (!homeSceneItem.isRoom()) {
-                                var config = scene.getScriptManager().getConfig();
-                                markPointData
-                                        .setSafePointPos(
-                                                config == null
-                                                        ? homeSceneItem.getBornPos().toProto()
-                                                        : config.born_pos.toProto())
-                                        .setTeapotSpiritPos(homeSceneItem.getDjinnPos().toProto());
-                            }
+                            // if (!homeSceneItem.isRoom()) {
+                            //     // setSafePointPos, setTeapotSpiritPos - fields not in current proto
+                            // }
 
                             var marks =
                                     homeSceneItem.getBlockItems().values().stream()

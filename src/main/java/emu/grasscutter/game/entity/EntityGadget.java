@@ -39,7 +39,7 @@ import lombok.*;
 public class EntityGadget extends EntityBaseGadget {
     @Getter private final GadgetData gadgetData;
 
-    @Getter(onMethod_ = @Override)
+    @Getter
     @Setter
     private int gadgetId;
 
@@ -52,7 +52,7 @@ public class EntityGadget extends EntityBaseGadget {
     @Getter @Setter private int pointType;
     @Getter private GadgetContent content;
 
-    @Getter(onMethod_ = @Override, lazy = true)
+    @Getter(lazy = true)
     private final Int2FloatMap fightProperties = new Int2FloatOpenHashMap();
 
     @Getter @Setter private SceneGadget metaGadget;
@@ -237,7 +237,7 @@ public class EntityGadget extends EntityBaseGadget {
     public void onRemoved() {
         super.onRemoved();
         if (!children.isEmpty()) {
-            getScene().removeEntities(children, VisionTypeOuterClass.VisionType.VISION_TYPE_REMOVE);
+            getScene().removeEntities(children, VisionTypeOuterClass.VisionType.VisionType_VISION_REMOVE);
             children.clear();
         }
     }
@@ -369,14 +369,14 @@ public class EntityGadget extends EntityBaseGadget {
                         .setAbilityInfo(AbilitySyncStateInfo.newBuilder())
                         .setRendererChangedInfo(EntityRendererChangedInfo.newBuilder())
                         .setAiInfo(
-                                SceneEntityAiInfo.newBuilder().setIsAiOpen(true).setBornPos(bornPos.toProto()))
+                                SceneEntityAiInfo.newBuilder() /* .setBornPos(bornPos.toProto()) */ )
                         .setBornPos(bornPos.toProto())
                         .build();
 
         SceneEntityInfo.Builder entityInfo =
                 SceneEntityInfo.newBuilder()
                         .setEntityId(getId())
-                        .setEntityType(ProtEntityType.PROT_ENTITY_TYPE_GADGET)
+                        .setEntityType(ProtEntityType.ProtEntityType_PROT_ENTITY_GADGET)
                         .setMotionInfo(
                                 MotionInfo.newBuilder()
                                         .setPos(getPosition().toProto())
